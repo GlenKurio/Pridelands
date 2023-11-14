@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { devices } from "../layout/Queries";
 
 const types = {
   h1: css`
@@ -23,11 +23,16 @@ const types = {
 };
 
 const Heading = styled.h1`
+  margin: 0;
+  padding: 0;
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 0.25em;
   ${(props) => types[props.type]}
+  @media ${devices.tablet} {
+    letter-spacing: 3px;
+  }
 `;
 
 Heading.defaultProps = {

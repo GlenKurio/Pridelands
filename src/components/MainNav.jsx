@@ -1,17 +1,84 @@
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import { UserIcon } from "@heroicons/react/24/solid";
+import { UserIcon as OutlineUserIcon } from "@heroicons/react/24/outline";
 
+const StyledNavLinkLogo = styled(NavLink)`
+  display: flex;
+  place-content: center;
+  padding: 1rem;
+  img {
+    max-width: 50px;
+  }
+  img:nth-child(2) {
+    display: none;
+  }
+
+  &:hover img:nth-child(1) {
+    display: none;
+  }
+  &:hover img:nth-child(2) {
+    display: block;
+  }
+`;
+
+const StyledUserIcon = styled(UserIcon)`
+  width: 32px;
+  height: 32px;
+`;
+
+const StyledOutlineUserIcon = styled(OutlineUserIcon)`
+  width: 32px;
+  height: 32px;
+`;
+
+const StyledNavLinkIcon = styled(NavLink)`
+  font-size: var(--fs-h5);
+  text-decoration: none;
+  color: var(--color-brand-500);
+  display: flex;
+  place-content: center;
+  padding: 1rem;
+
+  svg:nth-child(2) {
+    display: none;
+  }
+
+  &:hover svg:nth-child(1) {
+    display: none;
+  }
+  &:hover svg:nth-child(2) {
+    display: block;
+    color: var(--color-add-green-2);
+  }
+`;
+
+const StyledLinkContainer = styled.ul`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+const StyledNav = styled.nav`
+  padding: 1rem;
+`;
 function MainNav() {
   return (
-    <nav>
-      <ul>
+    <StyledNav>
+      <StyledLinkContainer>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <StyledNavLinkLogo to="/">
+            <img src="/public/logos/pride-icon-x2.webp" alt="" />
+            <img src="/public/logos/pride-logo-green.webp" alt="" />
+          </StyledNavLinkLogo>
         </li>
         <li>
-          <NavLink to="/account">Account</NavLink>
+          <StyledNavLinkIcon to="/account">
+            <StyledOutlineUserIcon /> <StyledUserIcon />
+          </StyledNavLinkIcon>
         </li>
-      </ul>
-    </nav>
+      </StyledLinkContainer>
+    </StyledNav>
   );
 }
 
