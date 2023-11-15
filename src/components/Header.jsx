@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 4rem;
   background-image: linear-gradient(
       to right bottom,
       rgba(234, 153, 123, 0.2),
@@ -40,7 +41,6 @@ const StyledheadingContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 3rem;
   @media ${devices.tablet} {
     margin-top: 12rem;
   }
