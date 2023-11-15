@@ -6,9 +6,11 @@ const type = {
     border-radius: var(--border-radius-full);
     border: 1px solid var(--color-brand-500);
     color: var(--color-brand-50);
+    box-shadow: var(--shadow-sm);
     &:hover {
       background-color: var(--color-add-green-2);
       border: 1px solid var(--color-add-green-2);
+      box-shadow: var(--shadow-lg);
     }
   `,
   secondary: css`

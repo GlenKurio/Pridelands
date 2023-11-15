@@ -58,9 +58,16 @@ const StyledLinkContainer = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 const StyledNav = styled.nav`
+  z-index: 10;
   padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
 `;
 function MainNav() {
   return (

@@ -1,4 +1,3 @@
-import MainNav from "./MainNav";
 import styled from "styled-components";
 import Heading from "./atoms/Heading";
 import { devices } from "./layout/Queries";
@@ -6,6 +5,10 @@ import Button from "./atoms/Button";
 
 const StyledHeader = styled.header`
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-image: linear-gradient(
       to right bottom,
       rgba(234, 153, 123, 0.2),
@@ -15,8 +18,8 @@ const StyledHeader = styled.header`
   background-size: cover;
   background-position: top;
 
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   color: var(--color-brand-50);
   user-select: none;
   margin: 1rem;
@@ -36,6 +39,7 @@ const StyledHeader = styled.header`
 const StyledheadingContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   margin-bottom: 3rem;
   @media ${devices.tablet} {
     margin-top: 12rem;
@@ -45,10 +49,13 @@ const StyledheadingContainer = styled.div`
 function Header() {
   return (
     <StyledHeader>
-      <MainNav />
       <StyledheadingContainer>
-        <Heading type="h1">Pridelands</Heading>
-        <Heading type="h5">Is where life happens</Heading>
+        <Heading type="h1" as="h1">
+          Pridelands
+        </Heading>
+        <Heading type="h5" as="h2">
+          Is where life happens
+        </Heading>
       </StyledheadingContainer>
       <Button type="primary" size="lg">
         Discover our tours
