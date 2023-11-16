@@ -31,6 +31,7 @@ const StyledFatures = styled.div`
   @media ${devices.mobileL} {
     clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
     -webkit-clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+    padding-top: 4rem;
   }
 `;
 

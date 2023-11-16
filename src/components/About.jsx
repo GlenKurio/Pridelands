@@ -9,7 +9,7 @@ const StyledAboutContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  margin: 4rem 1rem 1rem 1rem;
+  margin: 6rem 1rem 1rem 1rem;
   height: min-content;
 `;
 
@@ -18,6 +18,10 @@ const StyledContentContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
   align-items: start;
+
+  @media ${devices.mobileL} {
+    width: 350px;
+  }
 `;
 
 const StyledTextContainer = styled.div`
@@ -91,10 +95,23 @@ const ImageComposition = styled.div`
   @media ${devices.mobileL} {
     background-position: center;
     min-height: 25vh;
+    width: 350px;
+    & img:nth-child(1) {
+      left: 0;
+      top: -1.5rem;
+    }
+    & img:nth-child(2) {
+      right: 2.5rem;
+      top: 1.5rem;
+    }
+    & img:nth-child(3) {
+      left: 10%;
+      top: 6rem;
+    }
   }
   @media ${devices.mobileM} {
     background-position: center;
-    min-height: 20vh;
+    min-height: 25vh;
   }
   @media ${devices.mobileS} {
     background-position: center;

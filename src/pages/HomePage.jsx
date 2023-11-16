@@ -3,6 +3,7 @@ import About from "../components/About";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import MainNav from "../components/MainNav";
+import FeaturedTours from "../components/FeaturedTours";
 
 function HomePage() {
   return (
@@ -11,6 +12,7 @@ function HomePage() {
       <Header />
       <About />
       <Features />
+      <FeaturedTours />
       <Footer />
     </div>
   );

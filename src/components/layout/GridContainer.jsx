@@ -9,8 +9,10 @@ const type = {
     gap: 1rem;
     padding: 1rem;
   `,
-  autofitCard: css`
+  autofitCards: css`
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
   `,
   autofitMD: css`
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -24,7 +26,7 @@ const GridContainer = styled.div`
 `;
 
 GridContainer.defaultProps = {
-  type: "autofit",
+  type: "autofitMD",
 };
 
 export default GridContainer;

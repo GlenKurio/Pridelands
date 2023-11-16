@@ -15,6 +15,7 @@ const types = {
   `,
   h4: css`
     font-size: var(--fs-h4);
+    color: var(--color-gray-800);
   `,
   h5: css`
     font-size: var(--fs-h5);

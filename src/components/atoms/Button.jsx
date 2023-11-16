@@ -2,14 +2,22 @@ import styled, { css } from "styled-components";
 
 const type = {
   primary: css`
-    background-color: var(--color-brand-500);
+    background: linear-gradient(
+      to right,
+      var(--color-brand-500),
+      var(--color-add-orange)
+    );
     border-radius: var(--border-radius-full);
-    border: 1px solid var(--color-brand-500);
+    border: none;
     color: var(--color-brand-50);
     box-shadow: var(--shadow-sm);
     &:hover {
-      background-color: var(--color-add-green-2);
-      border: 1px solid var(--color-add-green-2);
+      background: linear-gradient(
+        to right,
+        var(--color-add-green-1),
+        var(--color-add-green-2)
+      );
+
       box-shadow: var(--shadow-lg);
     }
   `,
