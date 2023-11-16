@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TourCards from "./TourCards";
+import TourCards from "../features/tours/TourCards";
 import Heading from "./atoms/Heading";
 
 const FeaturedContainer = styled.div`

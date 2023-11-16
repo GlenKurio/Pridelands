@@ -4,6 +4,7 @@ import Features from "../components/Features";
 import Footer from "../components/Footer";
 import MainNav from "../components/MainNav";
 import FeaturedTours from "../components/FeaturedTours";
+import ToursUploader from "../features/tours/ToursUploader";
 
 function HomePage() {
   return (
@@ -13,6 +14,7 @@ function HomePage() {
       <About />
       <Features />
       <FeaturedTours />
+      <ToursUploader />
       <Footer />
     </div>
   );
