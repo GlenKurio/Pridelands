@@ -2,6 +2,7 @@ import styled from "styled-components";
 import TourCards from "../features/tours/TourCards";
 import Heading from "./atoms/Heading";
 import Button from "./atoms/Button";
+import { useNavigate } from "react-router-dom";
 
 const FeaturedContainer = styled.section`
   display: flex;
@@ -16,6 +17,7 @@ const ButtonWrap = styled.div`
 `;
 
 function FeaturedTours() {
+  const navigate = useNavigate();
   return (
     <FeaturedContainer>
       <Heading type="h4" color="gradient" as="h2">
@@ -23,7 +25,7 @@ function FeaturedTours() {
       </Heading>
       <TourCards />
       <ButtonWrap>
-        <Button type="reversed" size="lg">
+        <Button type="reversed" size="lg" onClick={() => navigate("/tours")}>
           Discover All Tours &rarr;
         </Button>
       </ButtonWrap>

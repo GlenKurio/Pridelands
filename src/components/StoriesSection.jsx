@@ -83,8 +83,4 @@ function StoriesSection() {
 
 export default StoriesSection;
 
-// TODO:
-//Possible improvements:
-///// - place stories into db,;
-///// - place stories inside a carousel to show more of them;
-///// - change format and show for which tour story was written, after click on story forward to according tour page;
+

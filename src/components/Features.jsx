@@ -72,7 +72,7 @@ function Features() {
           <Heading type="h6" as="h6">
             Explore the world
           </Heading>
-          <Paragraph type="psm">
+          <Paragraph size="psm" color="white">
             Let your adventurous spirit roam free as you explore uncharted
             territories and create unforgettable memories.
           </Paragraph>
@@ -88,7 +88,7 @@ function Features() {
           <Heading type="h6" as="h6">
             Meet Nature
           </Heading>
-          <Paragraph type="psm">
+          <Paragraph size="psm" color="white">
             Encounter Africa`s majestic wildlife up close, igniting a deep
             connection with nature`s awe-inspiring beauty.
           </Paragraph>
@@ -104,7 +104,7 @@ function Features() {
           <Heading type="h6" as="h6">
             Find Your Way
           </Heading>
-          <Paragraph type="psm">
+          <Paragraph size="psm" color="white">
             Uncover the magic of diverse landscapes, immerse in rich cultures,
             and expand your horizons with us.
           </Paragraph>
@@ -120,7 +120,7 @@ function Features() {
           <Heading type="h6" as="h6">
             Live healthier life
           </Heading>
-          <Paragraph type="psm">
+          <Paragraph size="psm" color="white">
             Embrace a healthier lifestyle in Africa`s natural playground,
             revitalizing mind, body, and soul.
           </Paragraph>

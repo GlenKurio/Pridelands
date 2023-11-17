@@ -4,6 +4,7 @@ import GridContainer from "./layout/GridContainer";
 import Paragraph from "./atoms/Paragraph";
 import Button from "./atoms/Button";
 import { devices } from "./layout/Queries";
+import { useNavigate } from "react-router-dom";
 
 const StyledAboutContainer = styled.section`
   display: flex;
@@ -120,6 +121,7 @@ const ImageComposition = styled.div`
 `;
 
 function About() {
+  const navigate = useNavigate();
   return (
     <StyledAboutContainer>
       <Heading color="gradient" type="h4" as="h2">
@@ -154,7 +156,7 @@ function About() {
               and create memories that will stay with you forever.
             </Paragraph>
           </StyledTextContainer>
-          <Button type="primary" size="md">
+          <Button type="primary" size="md" onClick={() => navigate("/tours")}>
             Discover tours
           </Button>
         </StyledContentContainer>

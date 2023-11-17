@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Heading from "./atoms/Heading";
 import { devices } from "./layout/Queries";
 import Button from "./atoms/Button";
+import { useNavigate } from "react-router-dom";
 
 const StyledHeader = styled.section`
   height: 100vh;
@@ -47,6 +48,7 @@ const StyledheadingContainer = styled.div`
 `;
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <StyledHeader>
       <StyledheadingContainer>
@@ -57,8 +59,8 @@ function Header() {
           Is where life happens
         </Heading>
       </StyledheadingContainer>
-      <Button type="primary" size="lg">
-        Discover our tours
+      <Button type="primary" size="lg" onClick={() => navigate("/tours")}>
+        discover our tours
       </Button>
     </StyledHeader>
   );

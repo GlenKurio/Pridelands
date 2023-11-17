@@ -26,12 +26,14 @@ TODO:
 
 - Redux & Redux Tool Kit - how to manage remote state?
 
-- Finish Featured Tours Cards
-- Use Remote Data for Reviews
-- Save Newsletter subscribers to supabase
+- Finish Featured Tours Cards - render from db, redesign + rating
+- Use Remote Data for Stories
+
 - All Tours Page:
 
   - Sorting and filtering;
+    -- Sorting by: duration, price, group size, level;
+    -- Filtering by: duration, price, country, group size, level;
 
 - Tour Details Page:
 

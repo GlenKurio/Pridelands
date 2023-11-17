@@ -89,7 +89,9 @@ function StoryCard({ story }) {
           <Heading type="h6" as="h3" color="gradient">
             {story.heading}
           </Heading>
-          <Paragraph type="psm">{story.body}</Paragraph>
+          <Paragraph type="psm" color="white">
+            {story.body}
+          </Paragraph>
         </StoryText>
         <StarRating
           color="var(--color-brand-500)"

@@ -5,6 +5,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import HomePage from "./pages/HomePage";
 import AccountPage from "./pages/AccountPage";
 import AppLayout from "./pages/AppLayout";
+import AllToursPage from "./pages/AllToursPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="/tours" element={<AllToursPage />} />
             <Route path="/account" element={<AccountPage />} />
           </Route>
         </Routes>

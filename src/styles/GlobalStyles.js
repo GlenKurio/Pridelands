@@ -80,10 +80,10 @@ const GlobalStyles = createGlobalStyle`
   --fs-h3: clamp(2rem, 5vw + 1rem, 4.236rem);
   --fs-h4: clamp(1.5rem, 4vw + 1rem, 2.618rem);
   --fs-h5: clamp(1.2rem, 2vw + 1rem, 1.918rem);
-  --fs-h6: 1rem;
-  --fs-p:  1rem;
-  --fs-psm: 0.618rem;
-  --fs-pxs: 0.382rem;
+  --fs-h6: 1.2rem;
+  --fs-p:  1.15rem;
+  --fs-psm: 1rem;
+  --fs-pxs: 0.75rem;
   
   /* SHADOW */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);

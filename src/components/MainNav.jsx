@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { UserIcon } from "@heroicons/react/24/solid";
-import { UserIcon as OutlineUserIcon } from "@heroicons/react/24/outline";
+// import { UserIcon } from "@heroicons/react/24/solid";
+// import { UserIcon as OutlineUserIcon } from "@heroicons/react/24/outline";
+import Navigation from "./Navigation";
 
 const StyledNavLinkLogo = styled(NavLink)`
   display: flex;
@@ -22,36 +23,36 @@ const StyledNavLinkLogo = styled(NavLink)`
   }
 `;
 
-const StyledUserIcon = styled(UserIcon)`
-  width: 32px;
-  height: 32px;
-`;
+// const StyledUserIcon = styled(UserIcon)`
+//   width: 32px;
+//   height: 32px;
+// `;
 
-const StyledOutlineUserIcon = styled(OutlineUserIcon)`
-  width: 32px;
-  height: 32px;
-`;
+// const StyledOutlineUserIcon = styled(OutlineUserIcon)`
+//   width: 32px;
+//   height: 32px;
+// `;
 
-const StyledNavLinkIcon = styled(NavLink)`
-  font-size: var(--fs-h5);
-  text-decoration: none;
-  color: var(--color-brand-500);
-  display: flex;
-  place-content: center;
-  padding: 1rem;
+// const StyledNavLinkIcon = styled(NavLink)`
+//   font-size: var(--fs-h5);
+//   text-decoration: none;
+//   color: var(--color-brand-500);
+//   display: flex;
+//   place-content: center;
+//   padding: 1rem;
 
-  svg:nth-child(2) {
-    display: none;
-  }
+//   svg:nth-child(2) {
+//     display: none;
+//   }
 
-  &:hover svg:nth-child(1) {
-    display: none;
-  }
-  &:hover svg:nth-child(2) {
-    display: block;
-    color: var(--color-add-green-2);
-  }
-`;
+//   &:hover svg:nth-child(1) {
+//     display: none;
+//   }
+//   &:hover svg:nth-child(2) {
+//     display: block;
+//     color: var(--color-add-green-2);
+//   }
+// `;
 
 const StyledLinkContainer = styled.ul`
   list-style: none;
@@ -79,14 +80,17 @@ function MainNav() {
             <img src="/public/logos/pride-logo-green.webp" alt="" />
           </StyledNavLinkLogo>
         </li>
-        <li>
-          <StyledNavLinkIcon to="/account">
-            <StyledOutlineUserIcon /> <StyledUserIcon />
-          </StyledNavLinkIcon>
-        </li>
+        <Navigation />
       </StyledLinkContainer>
     </StyledNav>
   );
 }
 
 export default MainNav;
+{
+  /* <li>
+          <StyledNavLinkIcon to="/account">
+            <StyledOutlineUserIcon /> <StyledUserIcon />
+          </StyledNavLinkIcon>
+        </li> */
+}
