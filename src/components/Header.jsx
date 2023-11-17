@@ -3,7 +3,7 @@ import Heading from "./atoms/Heading";
 import { devices } from "./layout/Queries";
 import Button from "./atoms/Button";
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -16,7 +16,7 @@ const sizes = {
 
 const Paragraph = styled.p`
   font-weight: 400;
-
+  color: var(--color-gray-900);
   letter-spacing: 0.05em;
   ${(props) => sizes[props.size]}
 `;

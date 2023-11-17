@@ -5,7 +5,7 @@ import Paragraph from "./atoms/Paragraph";
 import Button from "./atoms/Button";
 import { devices } from "./layout/Queries";
 
-const StyledAboutContainer = styled.div`
+const StyledAboutContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 4rem;

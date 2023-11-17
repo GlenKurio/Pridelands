@@ -4,7 +4,7 @@ import GridContainer from "./layout/GridContainer";
 import Paragraph from "./atoms/Paragraph";
 import Heading from "./atoms/Heading";
 
-const StyledFatures = styled.div`
+const StyledFatures = styled.section`
   display: flex;
   place-content: center;
   padding: 4rem 0;

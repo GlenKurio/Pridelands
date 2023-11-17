@@ -21,6 +21,26 @@ const type = {
       box-shadow: var(--shadow-lg);
     }
   `,
+  reversed: css`
+    background: linear-gradient(
+      to right,
+      var(--color-add-green-1),
+      var(--color-add-green-2)
+    );
+    border-radius: var(--border-radius-full);
+    border: none;
+    color: var(--color-brand-50);
+    box-shadow: var(--shadow-sm);
+    &:hover {
+      background: linear-gradient(
+        to right,
+        var(--color-brand-500),
+        var(--color-add-orange)
+      );
+
+      box-shadow: var(--shadow-lg);
+    }
+  `,
   secondary: css`
     background-color: var(--color-gray-50);
     border-radius: var(--border-radius-full);

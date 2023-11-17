@@ -93,6 +93,7 @@ function TourCard({ tour }) {
     <StyledTourCard>
       <Picture level={level}></Picture>
       <Content>
+        <p>Flag: "🇺🇸"</p>
         <Level level={level}>{level}</Level>
         <Heading type="h4" as="h4">
           {tourName}
