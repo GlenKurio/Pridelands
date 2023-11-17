@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import TourCards from "../features/tours/TourCards";
-import Heading from "./atoms/Heading";
-import Button from "./atoms/Button";
+import TourCards from "./TourCards";
+import Heading from "../../components/atoms/Heading";
+import Button from "../../components/atoms/Button";
 import { useNavigate } from "react-router-dom";
 
 const FeaturedContainer = styled.section`

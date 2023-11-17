@@ -1,3 +1,7 @@
+# Burger Menu:
+
+-Refactor CSS to make it purely styled components format;
+
 # Featured Tours Section:
 
 - Place Tours inside carousel;
@@ -6,6 +10,7 @@
 
 # Stories Section:
 
+- redesign story card
 - place stories into db,;
 - place stories inside a vertical carousel to show more of them;
 - change format and show for which tour story was written, after click on story forward to according tour page;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import supabase from "../../services/supabase";
 import Button from "../../components/atoms/Button";
-import { tours } from "../../data/tours";
+import { tours } from "../../assets/data/tours";
 
 async function deleteTours() {
   const { error } = await supabase.from("tours").delete().gt("id", 0);

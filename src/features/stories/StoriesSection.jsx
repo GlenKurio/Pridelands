@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Heading from "./atoms/Heading";
-import StoryCard from "../features/stories/StoryCard";
-import Button from "./atoms/Button";
+import Heading from "../../components/atoms/Heading";
+import StoryCard from "./StoryCard";
+import Button from "../../components/atoms/Button";
 
 const StyledStoriesSection = styled.section`
   margin-top: 6rem;
@@ -82,5 +82,3 @@ function StoriesSection() {
 }
 
 export default StoriesSection;
-
-

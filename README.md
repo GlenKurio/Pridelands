@@ -24,9 +24,20 @@ TODO:
 - Sign Up To newsletter form
 - Footer
 
-- Redux & Redux Tool Kit - how to manage remote state?
+17th:
+/-----------------------------------------------/
 
-- Finish Featured Tours Cards - render from db, redesign + rating
+- Redux & Redux Tool Kit - how to manage remote state?
+- Create use(tours, stories, availability, users, etc,) - make data ready.
+- create storage and slices;
+
+- Add RLS rules to supabase;
+- Implement authentication;
+
+- add 404 page;
+- error boundary from router;
+
+- Finish Featured Tours Cards - render from db, redesign + rating, book button leads to THIS tour;
 - Use Remote Data for Stories
 
 - All Tours Page:
@@ -34,14 +45,12 @@ TODO:
   - Sorting and filtering;
     -- Sorting by: duration, price, group size, level;
     -- Filtering by: duration, price, country, group size, level;
+    -- Load More button ?
 
 - Tour Details Page:
 
-  1. Section with available dates?
-
-  - with reviews for this tour;
-
-- Implement authentication
+  - Section with available dates? -
+    -- with reviews for this tour;
 
 - After press on Book button:
 
@@ -62,10 +71,6 @@ TODO:
     - Payment with stripe;
     - Redirect to Success Page;
 
-- Burger Menu:
-  a) Home
-  b) Tours
-  c) Acccount
 - Create acc page:
   - List of Booked Tours;
     - Upcoming Tours;
