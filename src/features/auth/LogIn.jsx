@@ -8,9 +8,8 @@ import { useNavigate } from "react-router-dom";
 import LogOut from "./LogOut";
 import toast from "react-hot-toast";
 
-import { getCurrentUser } from "../../services/apiAuth";
-
 const Form = styled.form`
+  margin-top: 30vh;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -52,7 +51,7 @@ function LogIn() {
 
     if (!email || !password) return;
 
-    await dispatch(logIn({ email, password }));
+    dispatch(logIn({ email, password }));
 
     if (error) toast.error("Provided email or password are incorrect");
     setEmail("");

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../../components/atoms/Button";
 import { logOut } from "./authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
