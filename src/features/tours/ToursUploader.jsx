@@ -5,7 +5,7 @@ import { tours } from "../../assets/data/tours";
 
 async function deleteTours() {
   const { error } = await supabase.from("tours").delete().gt("id", 0);
-  console.log(error.message);
+  if (error) console.log(error);
 }
 
 async function createTours() {

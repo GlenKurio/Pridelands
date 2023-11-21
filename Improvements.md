@@ -2,6 +2,8 @@
 
 -Refactor CSS to make it purely styled components format;
 
+- Fix bug with checkbox
+
 # Featured Tours Section:
 
 - Place Tours inside carousel;

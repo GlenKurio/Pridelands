@@ -42,7 +42,7 @@ const type = {
     }
   `,
   secondary: css`
-    background-color: var(--color-gray-50);
+    background-color: transparent;
     border-radius: var(--border-radius-full);
     border: 1px solid var(--color-brand-500);
     color: var(--color-brand-500);

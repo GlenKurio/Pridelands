@@ -4,7 +4,7 @@ import Features from "../components/Features";
 
 import FeaturedTours from "../features/tours/FeaturedTours";
 import ToursUploader from "../features/tours/ToursUploader";
-import DateRangePicker from "../features/availability/Calendar";
+// import DateRangePicker from "../features/availability/Calendar";
 import StoriesSection from "../features/stories/StoriesSection";
 
 function HomePage() {
@@ -15,8 +15,8 @@ function HomePage() {
       <Features />
       <FeaturedTours />
       <StoriesSection />
-      {/* <ToursUploader />
-      <DateRangePicker /> */}
+      <ToursUploader />
+      {/* <DateRangePicker /> */}
     </div>
   );
 }

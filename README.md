@@ -2,50 +2,28 @@ TODO:
 
 13th nov - start
 
-14th nov:
-
-- Finish base design system: variables, fluid fonts, layouts, \*\*\*
-- Create Buttons, \*\*\* inputs, forms,
-- Optimize images;
-- Find Icons for Features Cards
-
-15th:
-
-- Create Tours, Users, Orders, Reviews, Featured Tours in Supabase //
-- Create Featured Tours Cards //
-- Create Carousel with cards /
-- Create Tours Page ---
-- Create Tour Details Page - one page for all tours. Search Params? Other Ways? RTK?-----
-
-16th:
-
-- Create Reviews section
-- Create Reviews Grid Carousel 🤨
-- Sign Up To newsletter form
-- Footer
-
-17th:
+21st:
 /-----------------------------------------------/
 
-- Redux & Redux Tool Kit - how to manage remote state?
+1. Fill the db with Tours(create 12 more), set RLS Rules,
+   -- Finish Featured Tours Cards - render from db, redesign + avg.rating,
+
+2. Create Tour Details Page
+   -- Info button on Tour leads to THIS tour; Book Button Leads to checkout page;
+
+3. Create All Tours Page
+   -- Sorting and filtering - client or server side? React Query or Router?;
+   -- Sorting by: duration(short-long), price(cheap-expensive), group size(small-large), level(easy-extreme);
+   -- Filtering by: duration(to 3 days, to 7 days, 7+days), price(allow set the min and max price), group size, level;
+   -- Load More button ?
+
+4. Implement authentication;
+5. add 404 page;
+6. error boundary from router;
+
 - Create use(tours, stories, availability, users, etc,) - make data ready.
-- create storage and slices;
-
-- Add RLS rules to supabase;
-- Implement authentication;
-
-- add 404 page;
-- error boundary from router;
-
-- Finish Featured Tours Cards - render from db, redesign + rating, book button leads to THIS tour;
-- Use Remote Data for Stories
 
 - All Tours Page:
-
-  - Sorting and filtering;
-    -- Sorting by: duration, price, group size, level;
-    -- Filtering by: duration, price, country, group size, level;
-    -- Load More button ?
 
 - Tour Details Page:
 

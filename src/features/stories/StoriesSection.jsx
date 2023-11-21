@@ -45,7 +45,7 @@ const stories = [
     heading: "I had the best week ever with my family",
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Pariatur, beatae corporis optio molestiae temporibus soluta accusamus adipisci dolorem eos quaerat asperiores culpaprovident impedit necessitatibus reprehenderit illo doloribus harum odit",
     img: "../../public/stories/story-1.webp",
-    rating: 5,
+    rating: 4,
   },
   {
     author: "Jack Wilson",

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TourCards from "./TourCards";
+import FeaturedTourCards from "./FeaturedTourCards";
 import Heading from "../../components/atoms/Heading";
 import Button from "../../components/atoms/Button";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ function FeaturedTours() {
       <Heading type="h4" color="gradient" as="h2">
         Featured Tours
       </Heading>
-      <TourCards />
+      <FeaturedTourCards />
       <ButtonWrap>
         <Button type="reversed" size="lg" onClick={() => navigate("/tours")}>
           Discover All Tours &rarr;

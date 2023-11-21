@@ -2,11 +2,8 @@ import Input from "../../components/atoms/Input";
 import styled from "styled-components";
 import Button from "../../components/atoms/Button";
 import { useState } from "react";
-import { logIn } from "./authSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import LogOut from "./LogOut";
-import toast from "react-hot-toast";
 
 const Form = styled.form`
   margin-top: 30vh;
@@ -40,29 +37,16 @@ const FormContainer = styled.div`
   margin: 1rem;
 `;
 function LogIn() {
-  const error = useSelector((state) => state.error);
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  async function handleLogin(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-
-    if (!email || !password) return;
-
-    dispatch(logIn({ email, password }));
-
-    if (error) toast.error("Provided email or password are incorrect");
-    setEmail("");
-    setPassword("");
-    toast.success("Successfully Logged In");
-    return navigate("/account");
   }
 
   return (
-    <FormContainer onSubmit={handleLogin}>
-      <Form>
+    <FormContainer>
+      <Form onSubmit={handleSubmit}>
         <FormRow>
           <label htmlFor="Email">Enter Your Email</label>
           <Input
