@@ -4,7 +4,11 @@ import styled from "styled-components";
 import StarRating from "../../components/atoms/star.rating";
 import { useNavigate } from "react-router-dom";
 import StyledLink from "../../components/atoms/StyledLink";
+
 const StyledTourCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   transition: all 0.3s;
   cursor: pointer;
@@ -40,6 +44,7 @@ const Content = styled.div`
   padding: 2rem;
   height: 100%;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   gap: 1.5rem;
 `;
@@ -59,13 +64,12 @@ const Price = styled.span`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `;
 
 const Level = styled.span`
   position: absolute;
   right: 5px;
-  top: 185px;
+  top: 150px;
 
   text-align: center;
   font-weight: 600;
@@ -134,7 +138,7 @@ function TourCard({ tour }) {
           </DetailsRow>
         </Details>
         <Price>Price: ${price}</Price>
-        <StyledLink to={`tours/${id}`}>Book</StyledLink>
+        <StyledLink to={`/tours/${id}`}>Book</StyledLink>
         {/* <Button type="primary" size="md" onClick={() => navigate(`${id}`)}>
           Book
         </Button> */}

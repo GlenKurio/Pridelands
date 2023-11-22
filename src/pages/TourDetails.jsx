@@ -122,7 +122,7 @@ function TourDetails() {
         <DetailsRow>Duration: {duration} days</DetailsRow>
         <DetailsRow>{accommodation}</DetailsRow>
         <DetailsRow> Seats Left: {availability[0]?.slots}</DetailsRow>
-        <Price>${price} </Price>
+        <Price>1 seat: ${price} </Price>
         <ButtonsContainer>
           {/* <Button
             type="primary"

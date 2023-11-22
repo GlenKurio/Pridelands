@@ -1,75 +1,72 @@
-import Input from "../../components/atoms/Input";
-import styled from "styled-components";
 import Button from "../../components/atoms/Button";
 import { useState } from "react";
-
-import LogOut from "./LogOut";
-
-const Form = styled.form`
-  margin-top: 30vh;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  border: 1px solid var(--color-brand-500);
-  border-radius: 30px;
-  box-shadow: var(--shadow-md);
-  padding: 2rem;
-  min-width: 500px;
-  & label {
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    font-size: 1.25rem;
-    color: var(--color-gray--900);
-  }
-`;
-
-const FormRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-`;
-
+import FormRow from "../../components/FormRow";
+import styled from "styled-components";
+import Input from "../../components/atoms/Input";
+import { useLogin } from "./useLogin";
+// import { Form } from "react-router-dom";
+import StyledForm from "../../components/StyledForm";
+import { toast } from "react-hot-toast";
+import Heading from "../../components/atoms/Heading";
 const FormContainer = styled.div`
   display: grid;
   place-content: center;
   height: 100vh;
   margin: 1rem;
+  gap: 3rem;
 `;
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { login, isLoading } = useLogin();
   function handleSubmit(e) {
     e.preventDefault();
-  }
+    if (!email || !password) {
+      toast("Fill up the form first", {
+        icon: "🙄",
+      });
 
+      return;
+    }
+    login(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
+  }
   return (
     <FormContainer>
-      <Form onSubmit={handleSubmit}>
-        <FormRow>
-          <label htmlFor="Email">Enter Your Email</label>
+      <Heading type="h5" as="h1" color="gradient">
+        Login to Tour Account
+      </Heading>
+      <StyledForm onSubmit={handleSubmit} type="regular">
+        <FormRow label="Email Address">
           <Input
+            autoComplete="username"
             type="email"
             placeholder="Email"
             id="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
           />
         </FormRow>
-        <FormRow>
-          <label htmlFor="Password">Enter Your Password</label>
+        <FormRow label="Password">
           <Input
             type="password"
             placeholder="Password"
             id="Password"
-            onChange={(e) => setPassword(e.target.value)}
             value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
           />
         </FormRow>
-        <Button type="submit">LogIn</Button>
-      </Form>
-      <LogOut />
+        <Button>LogIn</Button>
+      </StyledForm>
     </FormContainer>
   );
 }

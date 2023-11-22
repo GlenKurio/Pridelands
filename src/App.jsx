@@ -16,6 +16,7 @@ import AllToursPage from "./pages/AllToursPage";
 import LogIn from "./features/auth/LogIn";
 import TourDetails from "./pages/TourDetails";
 import CheckoutPage1 from "./pages/CheckoutPage1";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,7 +34,14 @@ const router = createBrowserRouter(
       <Route path="tours" element={<AllToursPage />} />
       <Route path="tours/:id" element={<TourDetails />} />
       <Route path="checkout/:id" element={<CheckoutPage1 />} />
-      <Route path="account" element={<AccountPage />} />
+      <Route
+        path="account"
+        element={
+          <ProtectedRoute>
+            <AccountPage />
+          </ProtectedRoute>
+        }
+      />
 
       <Route path="login" element={<LogIn />} />
     </Route>
@@ -62,8 +70,8 @@ function App() {
               fontSize: "16px",
               maxWidth: "500px",
               padding: "16px 24px",
-              backgroundColor: "var(--color-grey-0)",
-              color: "var(--color-grey-700)",
+              backgroundColor: "var(--color-gray-100)",
+              color: "var(--color-gray-800)",
             },
           }}
         />

@@ -21,6 +21,7 @@
 4. Tour Details Page:
    -- Gallery of images;
    -- Available dates and seats for each date;
+   -- Users increase and decrease amount of seats;
    -- All Stories about this tour from clients who booked it;
    -- Ability to write a story about this tour - after click - asks to login to account, if logged in - check if user visited this tour, if not - explain user that you can write stories to already visited tours only.
 
