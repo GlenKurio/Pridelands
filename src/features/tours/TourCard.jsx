@@ -134,13 +134,10 @@ function TourCard({ tour }) {
           </DetailsRow>
         </Details>
         <Price>Price: ${price}</Price>
-        <Button
-          type="primary"
-          size="md"
-          onClick={() => navigate(`tours/${id}`)}
-        >
+        <StyledLink to={`tours/${id}`}>Book</StyledLink>
+        {/* <Button type="primary" size="md" onClick={() => navigate(`${id}`)}>
           Book
-        </Button>
+        </Button> */}
       </Content>
     </StyledTourCard>
   );

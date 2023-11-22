@@ -15,6 +15,7 @@ import AppLayout from "./pages/AppLayout";
 import AllToursPage from "./pages/AllToursPage";
 import LogIn from "./features/auth/LogIn";
 import TourDetails from "./pages/TourDetails";
+import CheckoutPage1 from "./pages/CheckoutPage1";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,7 +32,7 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="tours" element={<AllToursPage />} />
       <Route path="tours/:id" element={<TourDetails />} />
-
+      <Route path="checkout/:id" element={<CheckoutPage1 />} />
       <Route path="account" element={<AccountPage />} />
 
       <Route path="login" element={<LogIn />} />

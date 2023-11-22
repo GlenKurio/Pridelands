@@ -4,11 +4,11 @@ import { useTours } from "./useTours";
 import Spinner from "../../components/atoms/Spinner";
 
 function FeaturedTourCards() {
-  const { isLoading, tours } = useTours();
+  const { isLoading, toursAll } = useTours();
   if (isLoading) return <Spinner />;
   // show only fetaured tours
   let featuredTours;
-  featuredTours = tours.filter((tour) => tour.featured === true);
+  featuredTours = toursAll.filter((tour) => tour.featured === true);
   console.log(featuredTours);
   return (
     <GridContainer type="autofitCards">

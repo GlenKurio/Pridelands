@@ -1,16 +1,17 @@
 import { useTours } from "../features/tours/useTours";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Heading from "../components/atoms/Heading";
 import StarRating from "../components/atoms/star.rating";
 import Button from "../components/atoms/Button";
+import StyledLink from "../components/atoms/StyledLink";
 
 const StyledTourDetails = styled.div`
-  min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   padding: 2rem;
   gap: 2rem;
+  margin-top: 4rem;
 `;
 
 const ImgContainer = styled.figure`
@@ -52,10 +53,28 @@ const Price = styled.span`
   color: transparent;
   margin: 2rem 0;
 `;
+const AddImgs = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+
+  width: 100%;
+
+  & img {
+    max-width: 100%;
+  }
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
 
 function TourDetails() {
-  const { tours, isLoading } = useTours();
-  console.log(tours);
+  const navigate = useNavigate();
+  const { toursAll, isLoading } = useTours();
+  console.log(toursAll);
   const { id } = useParams();
   if (isLoading) return <div>Loading...</div>;
 
@@ -70,12 +89,20 @@ function TourDetails() {
     duration,
     avgRating,
     accommodation,
-  } = tours.find((tour) => tour.id == id);
+    availability,
+    images,
+    stories,
+  } = toursAll.find((tour) => tour.id == id);
 
   return (
     <StyledTourDetails>
       <ImgContainer>
         <img src={img} alt="" />
+        <AddImgs>
+          {images.map((image) => (
+            <img key={image.id} src={image.url} />
+          ))}
+        </AddImgs>
       </ImgContainer>
       <ContentContainer>
         <Heading type="h3" as="h1">
@@ -94,11 +121,30 @@ function TourDetails() {
         <DetailsRow>Guides: {guides}</DetailsRow>
         <DetailsRow>Duration: {duration} days</DetailsRow>
         <DetailsRow>{accommodation}</DetailsRow>
+        <DetailsRow> Seats Left: {availability[0]?.slots}</DetailsRow>
         <Price>${price} </Price>
-        <Button type="primary" size="md">
-          Book Now
-        </Button>
+        <ButtonsContainer>
+          {/* <Button
+            type="primary"
+            size="md"
+            onClick={() => navigate(`checkout/${id}`)}
+          >
+            Book Now
+          </Button> */}
+          <StyledLink to={`/checkout/${id}`}>Book</StyledLink>
+          <Button type="text" size="md" onClick={() => navigate("..")}>
+            &larr; go back
+          </Button>
+        </ButtonsContainer>
       </ContentContainer>
+      {/* {stories.map((story) => (
+        <div key={story.id}>
+          <span>{story.user_id}</span>
+          <span>{story.heading}</span>
+          <span>{story.rating}</span>
+          <span>{story.content}</span>
+        </div>
+      ))} */}
     </StyledTourDetails>
   );
 }
