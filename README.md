@@ -8,7 +8,7 @@ TODO:
 ###
 
 4. Implement authentication - Query; Login, logout, signUp - with google & password;
-5. add 404 page; \
+
 6. error boundary from router;
 7. Create account page;
 8. Create All Tours Page

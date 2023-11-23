@@ -9,7 +9,7 @@ const StyledFatures = styled.section`
   place-content: center;
   padding: 4rem 0;
 
-  height: 120vh;
+  min-height: 120vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(234, 153, 123, 0.2),

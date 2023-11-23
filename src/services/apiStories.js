@@ -12,7 +12,8 @@ export async function getTourStories(id) {
     .select(
       `*, users (
       firstName,
-      lastName, avatar
+      lastName, 
+      avatar
     )`
     )
     .eq("tour_id", id);
