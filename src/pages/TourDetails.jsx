@@ -93,7 +93,7 @@ function TourDetails() {
     images,
     stories,
   } = toursAll.find((tour) => tour.id == id);
-
+  console.log(toursAll);
   return (
     <StyledTourDetails>
       <ImgContainer>

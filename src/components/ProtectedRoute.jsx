@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useUser } from "../features/auth/useUser";
-import Spinner from "./atoms/Spinner";
+
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
@@ -36,7 +36,7 @@ function ProtectedRoute({ children }) {
   if (isLoading)
     return (
       <FullPage>
-        <Spinner />
+        <div>Loading ...</div>
       </FullPage>
     );
 

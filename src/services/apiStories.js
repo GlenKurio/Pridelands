@@ -9,7 +9,12 @@ export async function getStories() {
 export async function getTourStories(id) {
   let { data: tourStories, error } = await supabase
     .from("stories")
-    .select("*")
+    .select(
+      `*, users (
+      firstName,
+      lastName, avatar
+    )`
+    )
     .eq("tour_id", id);
   if (error) console.log(error.message);
   return tourStories;

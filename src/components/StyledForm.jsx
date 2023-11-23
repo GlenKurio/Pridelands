@@ -1,16 +1,21 @@
 import styled, { css } from "styled-components";
 import { Form } from "react-router-dom";
+import { devices } from "./layout/Queries";
 
 const StyledForm = styled(Form)`
   ${(props) =>
     props.type === "regular" &&
     css`
-      padding: 2.4rem 4rem;
+      padding: 2.4rem 2rem;
       /* Box */
       background-color: var(--color-brand-50);
       border: 1px solid var(--color-brand-500);
       border-radius: var(--border-radius-md);
-      min-width: 350px;
+      margin: 0 auto;
+      @media ${devices.laptopL} {
+        max-width: 600px;
+      }
+      min-width: 300px;
     `}
 
   ${(props) =>
@@ -26,7 +31,7 @@ const StyledForm = styled(Form)`
   gap: 2rem;
 `;
 
-Form.defaultProps = {
+StyledForm.defaultProps = {
   type: "regular",
 };
 

@@ -17,6 +17,8 @@ import LogIn from "./features/auth/LogIn";
 import TourDetails from "./pages/TourDetails";
 import CheckoutPage1 from "./pages/CheckoutPage1";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SignUp from "./features/auth/SignUp";
+import EmailConfirm from "./pages/EmailConfirm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +46,8 @@ const router = createBrowserRouter(
       />
 
       <Route path="login" element={<LogIn />} />
+      <Route path="signup" element={<SignUp />} />
+      <Route path="emailconfirm" element={<EmailConfirm />} />
     </Route>
   )
 );

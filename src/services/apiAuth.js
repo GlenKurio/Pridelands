@@ -37,6 +37,7 @@ export async function signUp({ firstName, lastName, email, phone, password }) {
         phone,
         avatar: "",
       },
+      emailRedirectTo: "http://localhost:5173/account",
     },
   });
 
