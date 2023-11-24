@@ -26,22 +26,16 @@ export async function logOut() {
   if (error) throw new Error(error.message);
 }
 
-export async function signUp({ firstName, lastName, email, phone, password }) {
+export async function signUp({ email, password }) {
   let { data, error } = await supabase.auth.signUp({
     email,
     password,
     otions: {
-      data: {
-        firstName,
-        lastName,
-        phone,
-        avatar: "",
-      },
       emailRedirectTo: "http://localhost:5173/account",
     },
   });
 
   if (error) throw new Error(error.message);
-
+  console.log(data);
   return data;
 }

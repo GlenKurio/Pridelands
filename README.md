@@ -7,11 +7,14 @@ TODO:
 
 ###
 
-4. Implement authentication - Query; Login, logout, signUp - with google & password;
+4. Implement signUp - with google
 
-6. error boundary from router;
-7. Create account page;
-8. Create All Tours Page
+5. error boundary from router;
+6. Create account page:
+   -- Bookings table
+   -- Favourites
+   -- Update Profile
+7. Create All Tours Page
    -- Sorting and filtering - client or server side? React Query or Router?;
    -- Sorting by: duration(short-long), price(cheap-expensive), group size(small-large), level(easy-extreme);
    -- Filtering by: duration(to 3 days, to 7 days, 7+days), price(allow set the min and max price), group size, level;

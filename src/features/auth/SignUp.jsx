@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import styled from "styled-components";
 import Heading from "../../components/atoms/Heading";
 import StyledLink from "../../components/atoms/StyledLink";
-import { addUser } from "../../services/apiUsers";
 
 const FormContainer = styled.div`
   width: 100%;
@@ -65,15 +64,10 @@ function SignUp() {
       });
       return;
     }
-    signup(
-      { ...formFields },
-      {
-        onSettled: () => {
-          setFormFields(defaultFormFields);
-        },
-      }
-    ),
-      addUser({ ...formFields });
+
+    signup({ ...formFields });
+
+    setFormFields(defaultFormFields);
   }
   return (
     <FormContainer>

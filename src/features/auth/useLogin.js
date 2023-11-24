@@ -11,7 +11,7 @@ export function useLogin() {
       queryClient.setQueryData(["user"], user.user);
 
       toast.success(`Welcome!`);
-      navigate("/account", { replace: true });
+      navigate(`/account/${user.user.id}`, { replace: true });
     },
     onError: (err) => {
       console.log("error", err);

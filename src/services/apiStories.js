@@ -16,7 +16,7 @@ export async function getTourStories(id) {
       avatar
     )`
     )
-    .eq("tour_id", id);
+    .eq("tourId", id);
   if (error) console.log(error.message);
   return tourStories;
 }

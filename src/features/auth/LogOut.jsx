@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import Button from "../../components/atoms/Button";
 import { useLogout } from "./useLogout";
-const OutContainer = styled.div`
-  margin-top: 5rem;
-`;
+const OutContainer = styled.div``;
 
 function LogOut() {
   const { logout, isLoading } = useLogout();
