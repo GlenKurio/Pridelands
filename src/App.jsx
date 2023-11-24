@@ -10,7 +10,6 @@ import { Toaster } from "react-hot-toast";
 import GlobalStyles from "./styles/GlobalStyles";
 
 import HomePage from "./pages/HomePage";
-import AccountPage from "./features/users/AccountPage";
 import AppLayout from "./pages/AppLayout";
 import AllToursPage from "./pages/AllToursPage";
 import LogIn from "./features/auth/LogIn";
@@ -20,7 +19,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import SignUp from "./features/auth/SignUp";
 import EmailConfirm from "./pages/EmailConfirm";
 import NotFoundPage from "./pages/NotFoundPage";
-
+import AccountLayout from "./features/users/AccountLayout";
+import Bookings from "./features/users/Bookings";
+import Favourites from "./features/users/Favourites";
+import UpdateProfile from "./features/users/UpdateProfile";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -41,11 +43,14 @@ const router = createBrowserRouter(
         path="account"
         element={
           <ProtectedRoute>
-            <AccountPage />
+            <AccountLayout />
           </ProtectedRoute>
         }
-      />
-
+      >
+        <Route index element={<Bookings />} />
+        <Route path="favorites" element={<Favourites />} />
+        <Route path="updateprofile" element={<UpdateProfile />} />
+      </Route>
       <Route path="login" element={<LogIn />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="emailconfirm" element={<EmailConfirm />} />

@@ -62,7 +62,16 @@ const GlobalStyles = createGlobalStyle`
 --color-success-700: #65ae46;
 --color-success-900: #4c8234;
 
-
+--color-gradient-orange: linear-gradient(
+      to right,
+      var(--color-brand-500),
+      var(--color-add-orange)
+    );
+--color-gradient-green: linear-gradient(
+        to right,
+        var(--color-add-green-1),
+        var(--color-add-green-2)
+      );
 
 
 // used for cards:

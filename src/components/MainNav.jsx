@@ -9,7 +9,7 @@ const StyledNavLinkLogo = styled(NavLink)`
   place-content: center;
   padding: 1rem;
   img {
-    max-width: 50px;
+    max-width: 45px;
   }
   img:nth-child(2) {
     display: none;
@@ -63,7 +63,7 @@ const StyledLinkContainer = styled.ul`
 `;
 const StyledNav = styled.nav`
   z-index: 10;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   position: fixed;
   top: 0;
   left: 0;

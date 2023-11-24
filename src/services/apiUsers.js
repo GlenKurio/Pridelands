@@ -11,13 +11,7 @@ export async function addUser({ firstName, lastName, email, phone }) {
 export async function getUserData(email) {
   let { data: userData, error } = await supabase
     .from("users")
-    .select(
-      `*, stories(
-        content, 
-        heading, 
-        rating, 
-        tours (*)), bookings(*)`
-    )
+    .select("*, stories(*), bookings(*, tours(*))")
     .eq("email", email);
   if (error) console.log(error.message);
 
