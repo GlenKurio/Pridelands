@@ -20,9 +20,11 @@ import SignUp from "./features/auth/SignUp";
 import EmailConfirm from "./pages/EmailConfirm";
 import NotFoundPage from "./pages/NotFoundPage";
 import AccountLayout from "./features/users/AccountLayout";
-import Bookings from "./features/users/Bookings";
+// import Bookings from "./features/users/Bookings";
+
 import Favourites from "./features/users/Favourites";
 import UpdateProfile from "./features/users/UpdateProfile";
+import ResBookings from "./features/users/ResBookingsTable";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -47,7 +49,8 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       >
-        <Route index element={<Bookings />} />
+        {/* <Route index element={<Bookings />} /> */}
+        <Route index element={<ResBookings />} />
         <Route path="favorites" element={<Favourites />} />
         <Route path="updateprofile" element={<UpdateProfile />} />
       </Route>
