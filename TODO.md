@@ -2,27 +2,25 @@ TODO:
 
 13th nov - start
 
-22nd:
 /-----------------------------------------------/
 
 ###
 
-4. Implement signUp - with google
+_Account page_:
 
-5. error boundary from router;
-6. Create account page:
-   -- Bookings table
-   -- Favourites
-   -- Update Profile
-7. Create All Tours Page
-   -- Sorting and filtering - client or server side? React Query or Router?;
-   -- Sorting by: duration(short-long), price(cheap-expensive), group size(small-large), level(easy-extreme);
-   -- Filtering by: duration(to 3 days, to 7 days, 7+days), price(allow set the min and max price), group size, level;
-   -- Load More button ? / Pagination with prefetchinggg
+- Tours Table:
+  --- Add sorting /filtering by : upcoming, past, all - mark under the date, make date to show 'from-to'
+- Favorite tours
+  -- Render cards with favorites;
+- Edit profile - avatar, email, password, name;
 
-###
+_All Tours Page_:
+-- Sorting and filtering - client or server side? React Query or Router?;
+-- Sorting by: duration(short-long), price(cheap-expensive), group size(small-large), level(easy-extreme);
+-- Filtering by: duration(to 3 days, to 7 days, 7+days), price(allow set the min and max price), group size, level;
+-- Load More button ? / Pagination with prefetchinggg
 
-Home page:
+_Home page_:
 -- Tour Card - add to favorites;
 -- Fetch Stories from db;
 -- Subscribe to newsletter;
@@ -32,20 +30,14 @@ Home page:
 -- Features section - redesign;
 -- Fix static Star Rating --
 
-Details page:
+_Details page_:
 -- Gallery;
 -- Save to favorites;
 -- Stories - fetch info about author(how?)
 -- Increase/Decrease quantity of seats - state management in Router??
 ------ Available dates wit available seats ??
 
-Account page:
--- Favorite tours;
--- Upcoming Tours;
--- Visited tours;
--- Edit profile - avatar, email, password, name;
-
-Checkout:
+_Checkout_:
 
 - After press on Book button:
 
@@ -66,8 +58,5 @@ Checkout:
     - Payment with stripe;
     - Redirect to Success Page;
 
-- Create acc page:
-  - List of Booked Tours;
-    - Upcoming Tours;
-    - Past Tours;
-    - When clicked on one of the past tours - gets to Tour Details page and gets a message that now user can write a review for this tour.
+_Fixes_
+-- Bug with checkbox;

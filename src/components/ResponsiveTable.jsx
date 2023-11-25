@@ -25,6 +25,7 @@ const Tr = styled.tr`
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 0.35em;
+  font-size: 1rem;
 
   @media ${devices.tablet} {
     border-bottom: 3px solid #ddd;
@@ -48,26 +49,23 @@ const Thead = styled.thead`
 const Th = styled.th`
   padding: 0.625em;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 `;
-export const Td = styled.td`
+const Td = styled.td`
   padding: 0.625em;
   text-align: center;
+  font-size: 1rem;
 
   @media ${devices.tablet} {
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: 0.8em;
     text-align: right;
-
-    &::before {
-      content: ${(props) => props.colName};
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     &:last-child {
       border-bottom: 0;
@@ -99,8 +97,8 @@ function Head({ children }) {
 function Row({ children }) {
   return <Tr>{children}</Tr>;
 }
-function Data({ colName, children }) {
-  return <Td colName={colName}>{children}</Td>;
+function Data({ children }) {
+  return <Td>{children}</Td>;
 }
 function Body({ data, render }) {
   if (!data) return <Tr>No data to show at the moment</Tr>;

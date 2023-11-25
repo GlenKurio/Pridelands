@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Table from "../../components/ResponsiveTable";
-import { Td } from "../../components/ResponsiveTable";
+
+import { devices } from "../../components/layout/Queries";
 
 const Tour = styled.div`
   display: flex;
@@ -11,8 +12,9 @@ const Tour = styled.div`
     max-width: 100px;
     border-radius: 5px;
   }
-  & > span {
+  & span {
     position: absolute;
+    text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -24,7 +26,7 @@ const Tour = styled.div`
   }
 
   &:hover {
-    & > span {
+    & span {
       opacity: 1;
     }
   }
@@ -32,14 +34,28 @@ const Tour = styled.div`
   font-weight: 600;
 `;
 
-const Date = styled(Td)`
+const Date = styled.div`
   font-weight: 600;
+  font-size: 1rem;
 `;
 
-const Status = styled(Td)``;
+const Status = styled.div`
+  font-size: 1rem;
+`;
 
-const Amount = styled(Td)`
-  font-weight: 500;
+const Amount = styled.div`
+  font-weight: 800;
+  font-size: 1rem;
+`;
+
+const Theader = styled.p`
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: none;
+
+  @media ${devices.tablet} {
+    display: block;
+  }
 `;
 
 function ResBookingRow({
@@ -53,27 +69,38 @@ function ResBookingRow({
     tours: { name: tourName, img, price, id: tourId },
   },
 }) {
+  const total = price * slots;
   return (
     <Table.Row>
-      <Table.Data colName={Tour}>
+      <Table.Data>
+        <Theader>Tour</Theader>
         <Tour>
-          <span>{tourName}</span>
           <Link to={`/tours/${tourId}`}>
+            <span>{tourName}</span>
             <img src={img} alt="" aria-hidden />
           </Link>
         </Tour>
       </Table.Data>
-
-      <Date>
-        <span>{slots}</span>
-      </Date>
-      <Date>
-        <span>{date}</span>
-      </Date>
-
-      <Status>{status}</Status>
-
-      <Amount>${price}</Amount>
+      <Table.Data>
+        <Theader>Seats Booked</Theader>
+        <Date>
+          <span>{slots}</span>
+        </Date>
+      </Table.Data>
+      <Table.Data>
+        <Theader>StartDate</Theader>
+        <Date>
+          <span>{date}</span>
+        </Date>
+      </Table.Data>
+      <Table.Data>
+        <Theader>Status</Theader>
+        <Status>{status}</Status>
+      </Table.Data>
+      <Table.Data>
+        <Theader>Total Amount</Theader>
+        <Amount>${total}</Amount>
+      </Table.Data>
     </Table.Row>
   );
 }
