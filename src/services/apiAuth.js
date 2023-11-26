@@ -1,4 +1,5 @@
 import supabase from "./supabase";
+import { toast } from "react-hot-toast";
 
 export async function logInWithPassword({ email, password }) {
   let { data, error } = await supabase.auth.signInWithPassword({
@@ -40,13 +41,17 @@ export async function signUp({ email, password }) {
   return data;
 }
 
-export async function updateUserAuth({ password, firstName, lastName }) {
-  let updateData;
-  if (password) updateData = { password };
-  if (firstName) updateData = { data: { firstName } };
-  if (lastName) updateData = { data: { lastName } };
+export async function updateUserAuth({ password, email }) {
+  const updates = {};
 
-  const { data, error } = await supabase.auth.updateUser(updateData);
+  if (password) updates.password = password;
+  if (email) updates.email = email;
+  if (password && !email) toast.success("Password successfully updated");
+  if (!password && email) toast.success("Email successfully updated");
+  if (password && email)
+    toast.success("Password and Email successfully updated");
+
+  const { data, error } = await supabase.auth.updateUser(updates);
   if (error) throw new Error(error.message);
 
   return { data };

@@ -1,5 +1,6 @@
 import supabase from "./supabase";
 import { supabaseUrl } from "./supabase";
+import { toast } from "react-hot-toast";
 
 const imageUrl = `${supabaseUrl}/storage/v1/object/public/avatars/avatar-placeholder.png?t=2023-11-24T17%3A09%3A09.384Z`;
 export async function addUser({
@@ -65,7 +66,7 @@ export async function getUserBookings() {
   return userBookings;
 }
 
-export async function updateUserTable({ firstName, lastName, avatar }) {
+export async function updateUserTable({ firstName, lastName, avatar, email }) {
   const { data: user, error: curuserErr } = await supabase.auth.getUser();
   if (curuserErr) throw new Error(curuserErr.message);
 
@@ -73,6 +74,21 @@ export async function updateUserTable({ firstName, lastName, avatar }) {
 
   if (firstName) updates.firstName = firstName;
   if (lastName) updates.lastName = lastName;
+  if (email) updates.email = email;
+
+  if (
+    (email && firstName && lastName && avatar) ||
+    (firstName && !lastName && avatar) ||
+    (firstName && lastName && !avatar) ||
+    (!firstName && lastName && avatar)
+  )
+    toast.success("Profile successfully Updated");
+  if (!email && firstName && !lastName && !avatar)
+    toast.success("First Name successfully Updated");
+  if (!email && !firstName && lastName && !avatar)
+    toast.success("Last Name successfully Updated");
+  if (!email && !firstName && !lastName && avatar)
+    toast.success("Avatar successfully Updated");
 
   if (avatar) {
     const fileName = `avatar-${user.user.id}-${Math.random()}`;

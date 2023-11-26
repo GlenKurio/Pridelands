@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { devices } from "./layout/Queries";
 
 const FileInput = styled.input.attrs({ type: "file" })`
   font-size: 1.4rem;
   border-radius: var(--border-radius-sm);
+
+  max-width: 200px;
 
   &::file-selector-button {
     font: inherit;
@@ -15,10 +18,18 @@ const FileInput = styled.input.attrs({ type: "file" })`
     background-color: var(--color-brand-500);
     cursor: pointer;
     transition: color 0.2s, background-color 0.2s;
+    display: flex;
 
     &:hover {
-      background-color: var(--color-brand-500);
+      background-color: var(--color-brand-400);
     }
+
+    @media ${devices.tablet} {
+      flex-direction: column;
+    }
+  }
+  @media ${devices.tablet} {
+    flex-direction: column;
   }
 `;
 
