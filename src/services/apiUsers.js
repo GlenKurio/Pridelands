@@ -35,7 +35,7 @@ export async function getUserFavs() {
   if (curuserErr) console.log(error.message);
   let { data: userFavs, error } = await supabase
     .from("favourites")
-    .select("*")
+    .select("*, tours(*)")
     .eq("user", user.user.id);
   if (error) console.log(error.message);
 
@@ -63,4 +63,35 @@ export async function getUserBookings() {
   if (error) console.log(error.message);
   console.log(userBookings);
   return userBookings;
+}
+
+export async function updateUserTable({ firstName, lastName, avatar }) {
+  const { data: user, error: curuserErr } = await supabase.auth.getUser();
+  if (curuserErr) throw new Error(curuserErr.message);
+
+  const updates = {};
+
+  if (firstName) updates.firstName = firstName;
+  if (lastName) updates.lastName = lastName;
+
+  if (avatar) {
+    const fileName = `avatar-${user.user.id}-${Math.random()}`;
+    const { error: storageError } = await supabase.storage
+      .from("avatars")
+      .upload(fileName, avatar);
+
+    if (storageError) throw new Error(storageError.message);
+
+    updates.avatar = `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`;
+  }
+
+  const { data: updatedUser, error: userUpdateError } = await supabase
+    .from("users")
+    .update(updates)
+    .eq("id", user.user.id)
+    .select();
+
+  if (userUpdateError) throw new Error(userUpdateError.message);
+
+  return updatedUser;
 }

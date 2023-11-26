@@ -14,8 +14,10 @@ const STable = styled.table`
   }
 `;
 const Caption = styled.caption`
-  font-size: 1.5em;
+  font-size: 1.5rem;
   margin: 0.5em 0 0.75em;
+  font-family: inherit;
+  font-weight: 700;
   @media ${devices.tablet} {
     font-size: 1.3em;
   }

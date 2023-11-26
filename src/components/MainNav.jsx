@@ -60,6 +60,7 @@ const StyledLinkContainer = styled.ul`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  z-index: 100;
 `;
 const StyledNav = styled.nav`
   z-index: 10;

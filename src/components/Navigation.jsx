@@ -5,6 +5,7 @@ import { useState } from "react";
 const StyledNavigation = styled.div`
   & .navigation--checkbox {
     display: none;
+    z-index: 120;
   }
 
   & .navigation--button {
@@ -17,7 +18,7 @@ const StyledNavigation = styled.div`
     right: 2rem;
     z-index: 200;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-
+    z-index: 120;
     text-align: center;
     cursor: pointer;
   }
@@ -33,7 +34,6 @@ const StyledNavigation = styled.div`
       rgba(242, 151, 39, 1),
       rgba(221, 96, 49, 1)
     );
-    z-index: 100;
 
     transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
     /* transform: scale(90); */
@@ -45,7 +45,6 @@ const StyledNavigation = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 150;
 
     opacity: 0;
     width: 0;
@@ -71,14 +70,14 @@ const StyledNavigation = styled.div`
     &:link,
     &:visited {
       display: inline-block;
-
+      z-index: 100;
       font-size: 2rem;
       font-weight: 300;
       padding: 1rem 2rem;
       color: var(--color-brand-50);
       text-transform: uppercase;
       text-decoration: none;
-
+      z-index: 100;
       background-image: linear-gradient(
         120deg,
         transparent 0%,
@@ -112,7 +111,7 @@ const StyledNavigation = styled.div`
   & .navigation--icon {
     position: relative;
     margin-top: 1.5rem;
-
+    z-index: 100;
     &,
     &::before,
     &::after {
@@ -198,7 +197,7 @@ function Navigation() {
               className="navigation--link"
               onClick={handleLinkClick}
             >
-              <span>01</span>About Pridelands
+              <span>01</span>Home
             </NavLink>
           </li>
           <li className="navigation--item">

@@ -2,7 +2,7 @@ import Heading from "../components/atoms/Heading";
 import TourCard from "../features/tours/TourCard";
 import { useTours } from "../features/tours/useTours";
 import styled from "styled-components";
-
+import { useFavs } from "../features/users/useFavourites";
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@ const CardsContainer = styled.div`
 
 function AllToursPage() {
   const { isLoading, toursAll } = useTours();
+  const { userFavs } = useFavs();
   if (isLoading) return <div>Loading ...</div>;
   return (
     <PageContainer>
@@ -29,7 +30,7 @@ function AllToursPage() {
       </Heading>
       <CardsContainer>
         {toursAll.map((tour) => (
-          <TourCard key={tour.id} tour={tour} />
+          <TourCard key={tour.id} tour={tour} favs={userFavs} />
         ))}
       </CardsContainer>
     </PageContainer>

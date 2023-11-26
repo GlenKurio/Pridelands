@@ -103,7 +103,7 @@ function AccountLayout() {
         </ul>
       </nav>
 
-      <Outlet />
+      <Outlet context={{ userData }} />
     </Account>
   );
 }

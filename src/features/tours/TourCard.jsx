@@ -4,6 +4,7 @@ import styled from "styled-components";
 import StarRating from "../../components/atoms/star.rating";
 import { useNavigate } from "react-router-dom";
 import StyledLink from "../../components/atoms/StyledLink";
+import Favourite from "../../components/Favourite";
 
 const StyledTourCard = styled.div`
   display: flex;
@@ -100,8 +101,16 @@ const DetailsRow = styled.span`
   border-bottom: 1px solid var(--color-gray-900);
 `;
 
-function TourCard({ tour }) {
+const HeartContainer = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+`;
+
+function TourCard({ tour, favs }) {
   const navigate = useNavigate();
+
   const {
     id,
     name,
@@ -115,8 +124,12 @@ function TourCard({ tour }) {
     avgRating,
     accommodation,
   } = tour;
+  const isInFavorites = favs?.some((fav) => id === fav.tour);
   return (
     <StyledTourCard>
+      <HeartContainer>
+        <Favourite isInFavorites={isInFavorites} tourId={id} />
+      </HeartContainer>
       <Picture level={level} img={img}></Picture>
       <Content>
         <Level level={level}>{level}</Level>

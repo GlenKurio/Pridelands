@@ -39,3 +39,15 @@ export async function signUp({ email, password }) {
   console.log(data);
   return data;
 }
+
+export async function updateUserAuth({ password, firstName, lastName }) {
+  let updateData;
+  if (password) updateData = { password };
+  if (firstName) updateData = { data: { firstName } };
+  if (lastName) updateData = { data: { lastName } };
+
+  const { data, error } = await supabase.auth.updateUser(updateData);
+  if (error) throw new Error(error.message);
+
+  return { data };
+}
