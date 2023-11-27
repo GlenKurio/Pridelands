@@ -14,7 +14,7 @@ import AppLayout from "./pages/AppLayout";
 import AllToursPage from "./pages/AllToursPage";
 import LogIn from "./features/auth/LogIn";
 import TourDetails from "./pages/TourDetails";
-import CheckoutPage1 from "./pages/CheckoutPage1";
+import CheckoutPage from "./features/checkout/CheckoutPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SignUp from "./features/auth/SignUp";
 import EmailConfirm from "./pages/EmailConfirm";
@@ -41,7 +41,7 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="tours" element={<AllToursPage />} />
       <Route path="tours/:id" element={<TourDetails />} />
-      <Route path="checkout/:id" element={<CheckoutPage1 />} />
+      <Route path="checkout/:id" element={<CheckoutPage />} />
       <Route
         path="account"
         element={

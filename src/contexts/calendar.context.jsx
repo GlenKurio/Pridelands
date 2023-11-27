@@ -5,12 +5,27 @@ export const CalendarContext = createContext({
   setSelecDate: () => null,
   selecSlots: null,
   setSelecSlots: () => null,
+  selecSeats: null,
+  setSelecSeats: () => null,
+  selecTotal: null,
+  setSelecTotal: () => null,
 });
 
 export function CalendarProvider({ children }) {
   const [selecDate, setSelecDate] = useState(null);
   const [selecSlots, setSelecSlots] = useState(null);
-  const value = { selecDate, setSelecDate, selecSlots, setSelecSlots };
+  const [selecSeats, setSelecSeats] = useState(null);
+  const [selecTotal, setSelecTotal] = useState(null);
+  const value = {
+    selecDate,
+    setSelecDate,
+    selecSlots,
+    setSelecSlots,
+    selecSeats,
+    setSelecSeats,
+    selecTotal,
+    setSelecTotal,
+  };
 
   return (
     <CalendarContext.Provider value={value}>

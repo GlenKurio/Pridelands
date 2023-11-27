@@ -1,15 +1,14 @@
-import { HiPlus, HiMinus } from "react-icons/hi2";
 import { useTours } from "../features/tours/useTours";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Heading from "../components/atoms/Heading";
 import StarRating from "../components/atoms/star.rating";
 import Button from "../components/atoms/Button";
-import StyledLink from "../components/atoms/StyledLink";
+// import StyledLink from "../components/atoms/StyledLink";
 import TourCalendar from "../features/availability/Calendar";
-import { toast } from "react-hot-toast";
+
 // import { useAvailability } from "../features/availability/useAvailability";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CalendarContext } from "../contexts/calendar.context";
 const StyledTourDetails = styled.div`
   display: grid;
@@ -45,67 +44,6 @@ const DetailsRow = styled.span`
   border-bottom: 1px solid var(--color-gray-900);
 `;
 
-const Price = styled.span`
-  font-size: 2.5rem;
-  font-weight: bold;
-  background-image: linear-gradient(
-    to right,
-    var(--color-brand-500),
-    var(--color-add-orange)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin: 2rem 0;
-`;
-const Seats = styled.div`
-  & span:nth-child(1) {
-    display: block;
-    margin-bottom: 2rem;
-  }
-
-  & span:nth-child(2) {
-    width: 50px;
-  }
-
-  & div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-  }
-
-  & button {
-    padding: 1rem;
-    border: none;
-    background-color: var(--color-brand-500);
-    border-radius: var(--border-radius-md);
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 2rem;
-    display: flex;
-    place-content: center;
-    color: var(--color-brand-50);
-    &:hover {
-      background-color: var(--color-add-green-2);
-    }
-
-    &:active {
-      scale: 0.9;
-    }
-  }
-  font-size: 2.5rem;
-  font-weight: bold;
-  background-image: linear-gradient(
-    to right,
-    var(--color-brand-500),
-    var(--color-add-orange)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin: 2rem 0;
-`;
 const AddImgs = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -129,33 +67,7 @@ function TourDetails() {
   const { toursAll, isLoading } = useTours();
   console.log(toursAll);
   const { selecDate, selecSlots } = useContext(CalendarContext);
-  const [seats, setSeats] = useState(1);
-  const [total, setTotal] = useState();
-  function handleIncrease() {
-    if (!selecDate || !selecSlots)
-      return toast("First you need to select a date", {
-        icon: "🙂",
-      });
-    if (+seats >= +selecSlots)
-      return toast(
-        "Looks like we don`t have anough seats on selected date. Try Another one",
-        {
-          icon: "🤔",
-        }
-      );
-    setSeats(+seats + 1);
-  }
-  function handleDecrease() {
-    if (!selecDate)
-      return toast("First you need to select a date", {
-        icon: "🙂",
-      });
-    if (seats <= 1)
-      return toast("Are you sure about that?", {
-        icon: "🤨",
-      });
-    setSeats(+seats - 1);
-  }
+
   // const { isLoadin, availability } = useAvailability();
   // console.log(availability);
   const { id } = useParams();
@@ -206,22 +118,12 @@ function TourDetails() {
         <DetailsRow>Duration: {duration} days</DetailsRow>
         <DetailsRow>{accommodation}</DetailsRow>
 
-        <TourCalendar availability={availability} duration={duration} />
-        <Seats>
-          {" "}
-          <span>How Many Seats?</span>
-          <div>
-            <button onClick={handleDecrease}>
-              <HiMinus />
-            </button>
-            <span>{seats}</span>
+        <TourCalendar
+          availability={availability}
+          duration={duration}
+          price={price}
+        />
 
-            <button onClick={handleIncrease}>
-              <HiPlus />
-            </button>
-          </div>
-        </Seats>
-        <Price>Total: ${total} </Price>
         <ButtonsContainer>
           <Button
             type="primary"
