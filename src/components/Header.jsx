@@ -16,7 +16,7 @@ const StyledHeader = styled.section`
       rgba(234, 153, 123, 0.2),
       rgba(250, 193, 122, 0.3)
     ),
-    url("../../public/bg/hero-lion-2.webp");
+    url("/bg/hero-lion-2.webp");
   background-size: cover;
   background-position: top;
 
