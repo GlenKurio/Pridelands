@@ -1,8 +1,9 @@
 import Calendar from "react-calendar";
 import "./Calendar.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
-import { isSameDay, parseISO } from "date-fns";
+import { isSameDay, parseISO, addDays } from "date-fns";
+import { CalendarContext } from "../../contexts/calendar.context";
 
 const CalendarContainer = styled.div`
   display: flex;
@@ -57,14 +58,17 @@ const CalendarLegend = styled.div`
   }
 `;
 
-function TourCalendar({ availability, duration }) {
+function TourCalendar({ availability, duration, setSeats }) {
   console.log(availability);
+  const { setSelecDate, setSelecSlots } = useContext(CalendarContext);
   const { available_date, slots } = availability;
   const [selDate, setSelDate] = useState();
   const [selectedSlots, setSelectedSlots] = useState(null);
+  const endDate = addDays(selDate, duration).toDateString();
 
   function handleDateChange(value) {
     setSelDate(value);
+    setSelecDate(value);
 
     const selectedAvailability = availability.find((avDate) =>
       isSameDay(parseISO(avDate.available_date), value)
@@ -73,8 +77,10 @@ function TourCalendar({ availability, duration }) {
     console.log(selectedAvailability);
     if (selSlots) {
       setSelectedSlots(selSlots);
+      setSelecSlots(selSlots);
     } else {
       setSelectedSlots(null);
+      setSelecSlots(null);
     }
   }
 
@@ -84,8 +90,11 @@ function TourCalendar({ availability, duration }) {
     const isDateDisabled = !availableDates.some((availableDate) =>
       isSameDay(parseISO(availableDate), date)
     );
-
-    return isDateDisabled;
+    const hasZeroSlots = availability.some(
+      (avDate) =>
+        isSameDay(parseISO(avDate.available_date), date) && avDate.slots === 0
+    );
+    return isDateDisabled || hasZeroSlots;
   };
   const tileClassName = ({ date }) => {
     const isDateAvailable = availableDates.some((availableDate) =>
@@ -98,6 +107,7 @@ function TourCalendar({ availability, duration }) {
       return null;
     }
   };
+
   return (
     <CalendarContainer>
       <CalendarLegend>
@@ -122,7 +132,7 @@ function TourCalendar({ availability, duration }) {
             </p>
             <p>
               <span>End: </span>
-              {selDate.toDateString() + 1}
+              {endDate}
             </p>
             <p>
               {selectedSlots ? (

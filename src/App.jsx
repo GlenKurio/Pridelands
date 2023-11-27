@@ -25,6 +25,7 @@ import AccountLayout from "./features/users/AccountLayout";
 import Favourites from "./features/users/Favourites";
 import UpdateProfile from "./features/users/UpdateProfile";
 import ResBookings from "./features/users/ResBookingsTable";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

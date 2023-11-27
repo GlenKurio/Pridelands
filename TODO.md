@@ -29,17 +29,14 @@ _Home page_:
 
 _Details page_:
 **_ Calendar: _**
---Try React Calendar - style it and make it show available dates from "db", show available slots for picked date - available slots come from 'availability' table in db..🤯
--- When picking a date - shows a range based on longivity of tour
 -- Write function to generate available dates randomly, from upcoming dates..
--- Send data(start date, tour name, slots, total amount) to next step --> Checkout.
+-- Send data(start date, tour name, slots, total amount) to next step --> Checkout.- Use Redux
 
 ---
 
 -- Gallery;
 -- Save to favorites;
 -- Stories - fetch info about author
--- Increase/Decrease quantity of seats - state management in Router?? - cannot pick more, than available on picked date. Doesn`t allow to change slots number before date picked..
 
 _Checkout_:
 

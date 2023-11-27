@@ -20,6 +20,9 @@ const type = {
 
       box-shadow: var(--shadow-lg);
     }
+    &:disabled {
+      background-color: black;
+    }
   `,
   reversed: css`
     background: linear-gradient(
@@ -89,6 +92,7 @@ const Button = styled.button`
   cursor: pointer;
   transition: all;
   transition-duration: 0.3s;
+
   ${(props) => size[props.size]}
   ${(props) => type[props.type]}
 `;
