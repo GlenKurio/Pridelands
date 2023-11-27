@@ -44,14 +44,14 @@ const stories = [
     author: "Mary Smith",
     heading: "I had the best week ever with my family",
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Pariatur, beatae corporis optio molestiae temporibus soluta accusamus adipisci dolorem eos quaerat asperiores culpaprovident impedit necessitatibus reprehenderit illo doloribus harum odit",
-    img: "../../public/stories/story-1.webp",
+    img: "/stories/story-1.webp",
     rating: 4,
   },
   {
     author: "Jack Wilson",
     heading: "WOW! My life is completely different now",
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Pariatur, beatae corporis optio molestiae temporibus soluta accusamus adipisci dolorem eos quaerat asperiores culpaprovident impedit necessitatibus reprehenderit illo doloribus harum odit",
-    img: "../../public/stories/story-2.webp",
+    img: "/stories/story-2.webp",
     rating: 5,
   },
 ];
@@ -65,7 +65,7 @@ function StoriesSection() {
       <StoriesContainer>
         <VideoContainer>
           <video autoPlay muted loop>
-            <source src="../../public/bg/video-bg.mp4" type="video/mp4" />
+            <source src="/bg/video-bg.mp4" type="video/mp4" />
             Your Browser does not support the video
           </video>
         </VideoContainer>

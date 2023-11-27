@@ -15,7 +15,7 @@ const StyledFatures = styled.section`
       rgba(234, 153, 123, 0.2),
       rgba(250, 193, 122, 0.3)
     ),
-    url("../../public/bg/elephants-3.webp");
+    url("/bg/elephants-3.webp");
   background-size: cover;
   background-position: top;
 
@@ -63,11 +63,7 @@ function Features() {
       <GridContainer type="autofitFeatures">
         <FeatureCard>
           <span>
-            <img
-              src="../../public/icons/explore_black_24dp.svg"
-              aria-hidden
-              alt=""
-            />
+            <img src="/icons/explore_black_24dp.svg" aria-hidden alt="" />
           </span>
           <Heading type="h6" as="h6">
             Explore the world
@@ -79,11 +75,7 @@ function Features() {
         </FeatureCard>
         <FeatureCard>
           <span>
-            <img
-              src="../../public/icons/south_america_black_24dp.svg"
-              aria-hidden
-              alt=""
-            />
+            <img src="/icons/south_america_black_24dp.svg" aria-hidden alt="" />
           </span>
           <Heading type="h6" as="h6">
             Meet Nature
@@ -96,7 +88,7 @@ function Features() {
         <FeatureCard>
           <span>
             <img
-              src="../../public/icons/person_pin_circle_black_24dp.svg"
+              src="/icons/person_pin_circle_black_24dp.svg"
               aria-hidden
               alt=""
             />
@@ -112,7 +104,7 @@ function Features() {
         <FeatureCard>
           <span>
             <img
-              src="../../public/icons/favorite_border_black_24dp.svg"
+              src="/icons/favorite_border_black_24dp.svg"
               aria-hidden
               alt=""
             />

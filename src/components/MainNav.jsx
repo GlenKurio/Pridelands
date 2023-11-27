@@ -77,8 +77,8 @@ function MainNav() {
       <StyledLinkContainer>
         <li>
           <StyledNavLinkLogo to="/">
-            <img src="/public/logos/pride-icon-x2.webp" alt="" />
-            <img src="/public/logos/pride-logo-green.webp" alt="" />
+            <img src="/logos/pride-icon-x2.webp" alt="" />
+            <img src="/logos/pride-logo-green.webp" alt="" />
           </StyledNavLinkLogo>
         </li>
         <Navigation />
