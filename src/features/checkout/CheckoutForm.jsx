@@ -10,9 +10,9 @@ const FormContainer = styled.div`
 `;
 
 function CheckoutForm() {
-  //   const { isLoading, userData } = useUserData();
-  //   if (isLoading) return <div>Loading</div>;
-  //   const { firstName, lastName, phone, email } = userData;
+  const { isLoading, userData } = useUserData();
+  if (isLoading) return <div>Loading</div>;
+  const { firstName, lastName, phone, email, id } = userData;
   return (
     <FormContainer>
       <StyledForm>
