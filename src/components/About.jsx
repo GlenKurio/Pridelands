@@ -162,15 +162,15 @@ function About() {
         </StyledContentContainer>
         <ImageComposition>
           <img
-            src="../../public/composition/comp-elephant.webp"
+            src="/composition/comp-elephant.webp"
             alt="People in boat on the river and group of Elephants on the shore."
           />
           <img
-            src="../../public/composition/comp-helicopter.webp"
+            src="/composition/comp-helicopter.webp"
             alt="Helicopter flying over the Victoria Fall in Zimbabwe"
           />
           <img
-            src="../../public/composition/comp-lion.webp"
+            src="/composition/comp-lion.webp"
             alt="People on safri shuttle in savannah looking on a adult male lion"
           />
         </ImageComposition>
