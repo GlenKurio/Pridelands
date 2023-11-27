@@ -9,7 +9,7 @@ exports.handler = async (event) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: "usd",
-      apyment_method_tpes: ["card"],
+      payment_method_types: ["card"],
     });
 
     return {
@@ -21,7 +21,7 @@ exports.handler = async (event) => {
 
     return {
       status: 400,
-      body: JSON.strigify({ error }),
+      body: JSON.stringify({ error }),
     };
   }
 };
