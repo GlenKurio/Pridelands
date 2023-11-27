@@ -33,7 +33,7 @@ const StyledHeader = styled.section`
         rgba(234, 153, 123, 0.2),
         rgba(250, 193, 122, 0.3)
       ),
-      url("../../public/bg/hero-lion-mobile.png");
+      url("/bg/hero-lion-mobile.png");
     background-position: center;
   }
 `;
