@@ -1,77 +1,150 @@
-import { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-// import { subDays, addDays } from "date-fns";
+import Calendar from "react-calendar";
+import "./Calendar.css";
+import { useState } from "react";
+import styled from "styled-components";
+import { isSameDay, parseISO } from "date-fns";
 
-const DateRangePicker = () => {
-  const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
-  const [highlightedDates, setHighlightedDates] = useState([]);
-  //   const [excludedDates, setExcludedDates] = useState([]);
+const CalendarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const SlotsContainer = styled.div`
+  max-width: 300px;
+  & p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0.5rem;
+    text-align: left;
+    & span {
+      font-weight: 800;
+    }
+  }
 
-  useEffect(() => {
-    // Simulated asynchronous fetching of dates from an external source (e.g., API call)
-    // Replace this with your actual fetching logic from a database or an API
-    const fetchDatesFromDatabase = async () => {
-      try {
-        // Simulated data fetching (replace with your actual data fetching logic)
-        const fetchedHighlightedDates = [
-          new Date(new Date().getFullYear(), 10, 17),
-          new Date(new Date().getFullYear(), 10, 19),
-          new Date(new Date().getFullYear(), 10, 20),
-          new Date(new Date().getFullYear(), 10, 22),
-          new Date(new Date().getFullYear(), 10, 25),
-          // ... Fetch highlighted dates from the database
-        ];
+  & .red {
+    color: var(--color-destructive-500);
+  }
+`;
 
-        // const fetchedExcludedDates = [
-        //   new Date(new Date().getFullYear(), 10, 20),
-        //   new Date(new Date().getFullYear(), 10, 25),
-        //   // ... Fetch excluded dates from the database
-        // ];
+const CalendarLegend = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+  font-weight: 900;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  & span {
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+  }
+  /* & span:nth-child(1) {
+    background-color: #ffff76;
+  } */
+  & span:nth-child(1) {
+    background-color: #f0f0f0;
+    color: #b2afaf;
+  }
+  & span:nth-child(2) {
+    background-color: var(--color-brand-500);
+    color: white;
+  }
+  & span:nth-child(3) {
+    background-color: var(--color-add-green-1);
+    color: white;
+  }
+`;
 
-        // Update state with fetched dates
-        setHighlightedDates(fetchedHighlightedDates);
-        // setExcludedDates(fetchedExcludedDates);
-      } catch (error) {
-        console.error("Error fetching dates:", error);
-        // Handle error fetching data
-      }
-    };
+function TourCalendar({ availability, duration }) {
+  console.log(availability);
+  const { available_date, slots } = availability;
+  const [selDate, setSelDate] = useState();
+  const [selectedSlots, setSelectedSlots] = useState(null);
 
-    // Call the function to fetch dates
-    fetchDatesFromDatabase();
-  }, []); // Ensure this effect runs only once upon initial mount
+  function handleDateChange(value) {
+    setSelDate(value);
 
-  const handleDateChange = (update) => {
-    const pickedStartDate = update[0];
-    const pickedEndDate = new Date(pickedStartDate);
-    pickedEndDate.setDate(pickedStartDate.getDate() + 5);
-
-    setDateRange([pickedStartDate, pickedEndDate]);
-  };
-
-  const isDateExcluded = (date) => {
-    return highlightedDates.some(
-      (highlightedDate) =>
-        highlightedDate.toDateString() === date.toDateString()
+    const selectedAvailability = availability.find((avDate) =>
+      isSameDay(parseISO(avDate.available_date), value)
     );
+    const selSlots = selectedAvailability.slots;
+    console.log(selectedAvailability);
+    if (selSlots) {
+      setSelectedSlots(selSlots);
+    } else {
+      setSelectedSlots(null);
+    }
+  }
+
+  const availableDates = availability.map((avDate) => avDate.available_date);
+  // console.log("available Dates:", availableDates);
+  const TileDisabled = ({ date }) => {
+    const isDateDisabled = !availableDates.some((availableDate) =>
+      isSameDay(parseISO(availableDate), date)
+    );
+
+    return isDateDisabled;
   };
-
+  const tileClassName = ({ date }) => {
+    const isDateAvailable = availableDates.some((availableDate) =>
+      isSameDay(parseISO(availableDate), date)
+    );
+    const isSelectedDate = isSameDay(date, selDate);
+    if (isDateAvailable) {
+      return isSelectedDate ? "available-date selected" : "available-date";
+    } else {
+      return null;
+    }
+  };
   return (
-    <DatePicker
-      selectsRange={true}
-      startDate={startDate}
-      endDate={endDate}
-      onChange={(update) => {
-        handleDateChange(update);
-      }}
-      highlightDates={highlightedDates}
-      //   excludeDates={excludedDates}
-      filterDate={(date) => isDateExcluded(date)}
-      withPortal
-    />
+    <CalendarContainer>
+      <CalendarLegend>
+        <span>Unavailable</span>
+        <span>Selected</span>
+        <span>Available</span>
+      </CalendarLegend>
+      <Calendar
+        onChange={handleDateChange}
+        defaultValue={selDate}
+        // selectRange={true}
+        minDate={new Date()}
+        tileDisabled={TileDisabled}
+        tileClassName={tileClassName}
+      />
+      <SlotsContainer>
+        {selDate ? (
+          <>
+            <p>
+              <span>Start: </span>
+              {selDate.toDateString()}
+            </p>
+            <p>
+              <span>End: </span>
+              {selDate.toDateString() + 1}
+            </p>
+            <p>
+              {selectedSlots ? (
+                <span>Available seats: {selectedSlots} </span>
+              ) : (
+                <span className="red">No Available Seats for this date 🙌</span>
+              )}
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              <span>No date selected</span>
+            </p>
+            <p>
+              <span>Select date to see available seats</span>
+            </p>
+          </>
+        )}
+      </SlotsContainer>
+    </CalendarContainer>
   );
-};
+}
 
-export default DateRangePicker;
+export default TourCalendar;

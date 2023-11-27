@@ -5,7 +5,8 @@ import Heading from "../components/atoms/Heading";
 import StarRating from "../components/atoms/star.rating";
 import Button from "../components/atoms/Button";
 import StyledLink from "../components/atoms/StyledLink";
-
+import TourCalendar from "../features/availability/Calendar";
+// import { useAvailability } from "../features/availability/useAvailability";
 const StyledTourDetails = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
@@ -75,6 +76,8 @@ function TourDetails() {
   const navigate = useNavigate();
   const { toursAll, isLoading } = useTours();
   console.log(toursAll);
+  // const { isLoadin, availability } = useAvailability();
+  // console.log(availability);
   const { id } = useParams();
   if (isLoading) return <div>Loading...</div>;
 
@@ -93,7 +96,7 @@ function TourDetails() {
     images,
     stories,
   } = toursAll.find((tour) => tour.id == id);
-  console.log(toursAll);
+  console.log(availability);
   return (
     <StyledTourDetails>
       <ImgContainer>
@@ -121,7 +124,8 @@ function TourDetails() {
         <DetailsRow>Guides: {guides}</DetailsRow>
         <DetailsRow>Duration: {duration} days</DetailsRow>
         <DetailsRow>{accommodation}</DetailsRow>
-        <DetailsRow> Seats Left: {availability[0]?.slots}</DetailsRow>
+
+        <TourCalendar availability={availability} duration={duration} />
         <Price>1 seat: ${price} </Price>
         <ButtonsContainer>
           {/* <Button

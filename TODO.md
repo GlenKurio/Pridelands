@@ -7,12 +7,10 @@ TODO:
 ###
 
 _Account page_:
-
-- Tours Table:
-  --- Add sorting /filtering by : upcoming, past, all - mark under the date, make date to show 'from-to'
-- Favorite tours
-  -- Render cards with favorites;
-- Edit profile - avatar, email, password, name;
+Tours Table:
+-- Set statuses: Upcoming, Visited
+-- Show range in date column
+-- Add sorting /filtering by : upcoming, visited
 
 _All Tours Page_:
 -- Sorting and filtering - client or server side? React Query or Router?;
@@ -21,7 +19,6 @@ _All Tours Page_:
 -- Load More button ? / Pagination with prefetchinggg
 
 _Home page_:
--- Tour Card - add to favorites;
 -- Fetch Stories from db;
 -- Subscribe to newsletter;
 -- Stories carousel;
@@ -31,11 +28,18 @@ _Home page_:
 -- Fix static Star Rating --
 
 _Details page_:
+**_ Calendar: _**
+--Try React Calendar - style it and make it show available dates from "db", show available slots for picked date - available slots come from 'availability' table in db..🤯
+-- When picking a date - shows a range based on longivity of tour
+-- Write function to generate available dates randomly, from upcoming dates..
+-- Send data(start date, tour name, slots, total amount) to next step --> Checkout.
+
+---
+
 -- Gallery;
 -- Save to favorites;
--- Stories - fetch info about author(how?)
--- Increase/Decrease quantity of seats - state management in Router??
------- Available dates wit available seats ??
+-- Stories - fetch info about author
+-- Increase/Decrease quantity of seats - state management in Router?? - cannot pick more, than available on picked date. Doesn`t allow to change slots number before date picked..
 
 _Checkout_:
 
@@ -60,3 +64,4 @@ _Checkout_:
 
 _Fixes_
 -- Bug with checkbox;
+-- Check and fix bug with deleting from Favorites - by now deletes by tour id - which can delete tours with same id for other users..
