@@ -47,13 +47,13 @@ const stories = [
     img: "/stories/story-1.webp",
     rating: 4,
   },
-  {
-    author: "Jack Wilson",
-    heading: "WOW! My life is completely different now",
-    body: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Pariatur, beatae corporis optio molestiae temporibus soluta accusamus adipisci dolorem eos quaerat asperiores culpaprovident impedit necessitatibus reprehenderit illo doloribus harum odit",
-    img: "/stories/story-2.webp",
-    rating: 5,
-  },
+  // {
+  //   author: "Jack Wilson",
+  //   heading: "WOW! My life is completely different now",
+  //   body: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Pariatur, beatae corporis optio molestiae temporibus soluta accusamus adipisci dolorem eos quaerat asperiores culpaprovident impedit necessitatibus reprehenderit illo doloribus harum odit",
+  //   img: "/stories/story-2.webp",
+  //   rating: 5,
+  // },
 ];
 
 function StoriesSection() {

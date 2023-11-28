@@ -33,8 +33,8 @@ const StoryContainer = styled.div`
 
 const AuthorImg = styled.figure`
   align-self: center;
-  height: 6rem;
-  width: 6rem;
+  height: 4rem;
+  width: 4rem;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -86,10 +86,10 @@ function StoryCard({ story }) {
       </AuthorImg>
       <StoryBody>
         <StoryText>
-          <Heading type="h6" as="h3" color="gradient">
+          <Heading type="h6" as="h3" color="">
             {story.heading}
           </Heading>
-          <Paragraph type="psm" color="white">
+          <Paragraph type="pxs" color="white">
             {story.body}
           </Paragraph>
         </StoryText>
