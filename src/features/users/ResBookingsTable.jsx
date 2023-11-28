@@ -14,8 +14,8 @@ const Container = styled.div`
 
 function ResBookings() {
   const { isLoading, bookings } = useBookings();
-  console.log(bookings);
-  if (isLoading) return <Spinner/>;
+
+  if (isLoading) return <Spinner />;
 
   return (
     <Container>

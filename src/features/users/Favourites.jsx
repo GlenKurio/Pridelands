@@ -8,7 +8,8 @@ import Spinner from "../../components/atoms/Spinner";
 const FavCardsContainer = styled.div`
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
 `;
 const Empty = styled.div`
   display: flex;
@@ -32,8 +33,8 @@ const Container = styled.div`
 
 function Favourites() {
   const { userFavs, isLoading } = useFavs();
-  console.log(userFavs);
-  if (isLoading) return <Spinner/>;
+
+  if (isLoading) return <Spinner />;
   if (userFavs.length == 0)
     return (
       <Empty>

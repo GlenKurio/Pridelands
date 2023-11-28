@@ -111,7 +111,8 @@ const HeartContainer = styled.div`
 
 function TourCard({ tour, favs }) {
   const navigate = useNavigate();
-  const { setSelecSeats, setSelecTotal } = useContext(CalendarContext);
+  const { setSelecSeats, setSelecTotal, setSelecDate } =
+    useContext(CalendarContext);
 
   const {
     id,
@@ -132,6 +133,7 @@ function TourCard({ tour, favs }) {
     navigate(`/tours/${id}`);
     setSelecSeats(1);
     setSelecTotal(price);
+    setSelecDate(null);
   }
   return (
     <StyledTourCard>

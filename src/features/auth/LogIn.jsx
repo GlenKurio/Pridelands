@@ -4,6 +4,7 @@ import FormRow from "../../components/FormRow";
 import styled from "styled-components";
 import Input from "../../components/atoms/Input";
 import { useLogin } from "./useLogin";
+import { useNavigate } from "react-router-dom";
 // import { Form } from "react-router-dom";
 import StyledForm from "../../components/StyledForm";
 import { toast } from "react-hot-toast";
@@ -26,6 +27,7 @@ const SmText = styled.p`
   color: var(--color-gray-800);
 `;
 function LogIn() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
@@ -44,6 +46,7 @@ function LogIn() {
         onSettled: () => {
           setEmail("");
           setPassword("");
+          navigate("/account");
         },
       }
     );

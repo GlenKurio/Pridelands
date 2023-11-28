@@ -11,7 +11,7 @@ export function useAddToFavs() {
       toast.success("Tour Saved to Your Favourites!");
       queryClient.invalidateQueries({ queryKey: ["favourites"] });
     },
-    onError: (err) => toast.error(err.message),
+    onError: () => toast.error("Need to login to save to davourites"),
   });
 
   return { isAdding, saveToFavs };

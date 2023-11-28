@@ -65,7 +65,7 @@ const UserInfo = styled.div`
 
 function AccountLayout() {
   const { userData, isLoading } = useUserData();
-  console.log(userData);
+  
   if (isLoading) return <Spinner/>;
 
   return (

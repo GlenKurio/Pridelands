@@ -33,7 +33,7 @@ export async function getUserData() {
 
 export async function getUserFavs() {
   const { data: user, error: curuserErr } = await supabase.auth.getUser();
-  if (curuserErr) console.log(error.message);
+  if (curuserErr) return console.log(error.message);
   let { data: userFavs, error } = await supabase
     .from("favourites")
     .select("*, tours(*)")
@@ -62,7 +62,7 @@ export async function getUserBookings() {
     .select("*, tours(*)")
     .eq("user", user.user.id);
   if (error) console.log(error.message);
-  console.log(userBookings);
+
   return userBookings;
 }
 

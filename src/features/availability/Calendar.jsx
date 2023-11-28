@@ -134,10 +134,6 @@ function TourCalendar({ availability, duration, price }) {
     selecTotal,
   } = useContext(CalendarContext);
 
-  useEffect(() => {
-    localStorage.setItem("selecDate", selecDate);
-    localStorage.setItem("selecTotal", selecTotal);
-  }, [selecDate, selecTotal]);
   // const { available_date, slots } = availability;
   // const [selDate, setSelDate] = useState();
   // const [selectedSlots, setSelectedSlots] = useState(null);
@@ -155,7 +151,7 @@ function TourCalendar({ availability, duration, price }) {
       isSameDay(parseISO(avDate.available_date), value)
     );
     const selSlots = selectedAvailability.slots;
-    console.log(selectedAvailability);
+
     if (selSlots) {
       // setSelectedSlots(selSlots);
       setSelecSlots(selSlots);
@@ -191,7 +187,7 @@ function TourCalendar({ availability, duration, price }) {
   };
 
   function handleIncrease() {
-    if (!selecDate || !selecSlots)
+    if (!selecSlots || !selecDate)
       return toast("First you need to select a date", {
         icon: "🙂",
       });

@@ -64,7 +64,8 @@ const ButtonsContainer = styled.div`
 `;
 
 function TourDetails() {
-  const { setSelecSeats, setSelecTotal } = useContext(CalendarContext);
+  const { setSelecSeats, setSelecTotal, setSelecDate } =
+    useContext(CalendarContext);
   const navigate = useNavigate();
   const { toursAll, isLoading } = useTours();
 
@@ -93,6 +94,7 @@ function TourDetails() {
     navigate("..");
     setSelecSeats(1);
     setSelecTotal(price);
+    setSelecDate(null);
   }
   return (
     <StyledTourDetails>
