@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import OrderDetails from "./OrderDetails";
-import CheckoutForm from "./CheckoutForm";
 import { devices } from "../../components/layout/Queries";
-import PaymentForm from "../../components/PaymentForm";
+import { useUser } from "../auth/useUser";
+import Heading from "../../components/atoms/Heading";
+import Spinner from "../../components/atoms/Spinner";
+// import PaymentForm from "../../components/PaymentForm";
 
 const CheckoutContainer = styled.div`
   margin: 6rem 1rem;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 4rem;
 
   @media ${devices.tablet} {
@@ -19,11 +22,14 @@ const CheckoutContainer = styled.div`
 `;
 
 function CheckoutPage() {
+  const { user, isLoading } = useUser();
+  if (isLoading) return <Spinner />;
   return (
     <CheckoutContainer>
-      <CheckoutForm />
-      <OrderDetails />
-      <PaymentForm />
+      <Heading as="h1" type="h5" color="gradient">
+        Here is your order
+      </Heading>
+      <OrderDetails user={user} />
     </CheckoutContainer>
   );
 }

@@ -5,16 +5,21 @@ import styled from "styled-components";
 import { CalendarContext } from "../../contexts/calendar.context";
 import { devices } from "../../components/layout/Queries";
 import Heading from "../../components/atoms/Heading";
+import Button from "../../components/atoms/Button";
 
+import { usePlaceBooking } from "./useBookings";
+import StyledLink from "../../components/atoms/StyledLink";
+import Spinner from "../../components/atoms/Spinner";
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 400px;
+  width: 500px;
   background-color: var(--color-brand-200);
   color: var(--color-gray-900);
   padding: 1rem;
   border-radius: var(--border-radius-md);
+
   @media ${devices.tablet} {
     margin: 0 auto;
     width: 100%;
@@ -50,26 +55,35 @@ const HeadingContainer = styled.div`
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--color-gray-900);
 `;
-function OrderDetails() {
-  const { selecDate, selecSlots, selecSeats, selecTotal } =
-    useContext(CalendarContext);
+function OrderDetails({ user }) {
+  const { selecDate, selecSeats, selecTotal } = useContext(CalendarContext);
   const { toursAll, isLoading } = useTours();
-  const { id } = useParams();
-  if (isLoading) return <div>Loading...</div>;
+  const { id: tourid } = useParams();
+  const { placeBooking, isPlacing } = usePlaceBooking();
+  if (!selecDate || !selecTotal)
+    return (
+      <div>
+        <StyledLink to={`/tours/${tourid}`}>Back To Tour</StyledLink>
+      </div>
+    );
+  if (!selecDate || selecTotal) if (isLoading) return <Spinner />;
 
-  const {
-    name,
-    price,
-    description,
-    group,
-    level,
-    img,
-    guides,
-    duration,
-    avgRating,
-    accommodation,
-  } = toursAll.find((tour) => tour.id == id);
+  const { name, price, group, level, guides, duration } = toursAll.find(
+    (tour) => tour.id == tourid
+  );
+  const { id: userId } = user;
 
+  const orderDetails = {
+    user: userId,
+    slots: selecSeats,
+    tourId: tourid,
+    date: selecDate.toDateString(),
+    total: selecTotal,
+  };
+
+  function handleSubmit() {
+    placeBooking({ ...orderDetails });
+  }
   return (
     <DetailsContainer>
       <HeadingContainer>
@@ -113,6 +127,9 @@ function OrderDetails() {
         <span>Total:</span>
         <span>${selecTotal}</span>
       </DetailsRow>
+      <Button disabled={isPlacing} onClick={handleSubmit}>
+        Place order
+      </Button>
     </DetailsContainer>
   );
 }

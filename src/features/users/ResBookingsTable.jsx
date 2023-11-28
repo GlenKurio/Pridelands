@@ -3,6 +3,7 @@ import Table from "../../components/ResponsiveTable";
 import styled from "styled-components";
 import ResBookingRow from "./ResRow";
 import Heading from "../../components/atoms/Heading";
+import Spinner from "../../components/atoms/Spinner";
 const Container = styled.div`
   min-width: 100%;
   min-height: 500px;
@@ -14,7 +15,7 @@ const Container = styled.div`
 function ResBookings() {
   const { isLoading, bookings } = useBookings();
   console.log(bookings);
-  if (isLoading) return <div>Loading Bookings</div>;
+  if (isLoading) return <Spinner/>;
 
   return (
     <Container>

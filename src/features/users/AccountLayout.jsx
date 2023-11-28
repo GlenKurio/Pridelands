@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Outlet, Link } from "react-router-dom";
 import { useUserData } from "./useUserData";
 import Heading from "../../components/atoms/Heading";
+import Spinner from "../../components/atoms/Spinner";
 
 const Account = styled.div`
   min-height: 100vh;
@@ -65,7 +66,7 @@ const UserInfo = styled.div`
 function AccountLayout() {
   const { userData, isLoading } = useUserData();
   console.log(userData);
-  if (isLoading) return <div>Loading account ...</div>;
+  if (isLoading) return <Spinner/>;
 
   return (
     <Account>

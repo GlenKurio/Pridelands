@@ -1,11 +1,12 @@
 import Calendar from "react-calendar";
 import "./Calendar.css";
-import { useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import styled from "styled-components";
 import { isSameDay, parseISO, addDays } from "date-fns";
 import { CalendarContext } from "../../contexts/calendar.context";
 import { HiPlus, HiMinus } from "react-icons/hi2";
 import { toast } from "react-hot-toast";
+
 const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -122,29 +123,44 @@ const Seats = styled.div`
 `;
 
 function TourCalendar({ availability, duration, price }) {
-  console.log(availability);
-  const { setSelecDate, setSelecSlots, setSelecSeats, setSelecTotal } =
-    useContext(CalendarContext);
+  const {
+    setSelecDate,
+    setSelecSlots,
+    setSelecSeats,
+    setSelecTotal,
+    selecSeats,
+    selecSlots,
+    selecDate,
+    selecTotal,
+  } = useContext(CalendarContext);
+
+  useEffect(() => {
+    localStorage.setItem("selecDate", selecDate);
+    localStorage.setItem("selecTotal", selecTotal);
+  }, [selecDate, selecTotal]);
   // const { available_date, slots } = availability;
-  const [selDate, setSelDate] = useState();
-  const [selectedSlots, setSelectedSlots] = useState(null);
-  const [seats, setSeats] = useState(1);
-  const [total, setTotal] = useState(price);
-  const endDate = addDays(selDate, duration).toDateString();
+  // const [selDate, setSelDate] = useState();
+  // const [selectedSlots, setSelectedSlots] = useState(null);
+  // const [seats, setSeats] = useState(1);
+  // const [total, setTotal] = useState(price);
+  const endDate = addDays(selecDate, duration).toDateString();
 
   function handleDateChange(value) {
-    setSelDate(value);
+    // setSelDate(value);
+
     setSelecDate(value);
+    setSelecSeats(1);
+    setSelecTotal(price);
     const selectedAvailability = availability.find((avDate) =>
       isSameDay(parseISO(avDate.available_date), value)
     );
     const selSlots = selectedAvailability.slots;
     console.log(selectedAvailability);
     if (selSlots) {
-      setSelectedSlots(selSlots);
+      // setSelectedSlots(selSlots);
       setSelecSlots(selSlots);
     } else {
-      setSelectedSlots(null);
+      // setSelectedSlots(null);
       setSelecSlots(null);
     }
   }
@@ -161,11 +177,12 @@ function TourCalendar({ availability, duration, price }) {
     );
     return isDateDisabled || hasZeroSlots;
   };
+
   const tileClassName = ({ date }) => {
     const isDateAvailable = availableDates.some((availableDate) =>
       isSameDay(parseISO(availableDate), date)
     );
-    const isSelectedDate = isSameDay(date, selDate);
+    const isSelectedDate = isSameDay(date, selecDate);
     if (isDateAvailable) {
       return isSelectedDate ? "available-date selected" : "available-date";
     } else {
@@ -174,35 +191,33 @@ function TourCalendar({ availability, duration, price }) {
   };
 
   function handleIncrease() {
-    if (!selDate || !selectedSlots)
+    if (!selecDate || !selecSlots)
       return toast("First you need to select a date", {
         icon: "🙂",
       });
-    if (+seats >= +selectedSlots)
+    if (+selecSeats >= +selecSlots)
       return toast(
         "Looks like we don`t have anough seats on selected date. Try Another one",
         {
           icon: "🤔",
         }
       );
-    setSeats(+seats + 1);
-    setSelecSeats(seats);
-    setTotal(+seats * (+price + +price));
-    setSelecTotal(total);
+    const updatedSeats = +selecSeats + 1;
+    setSelecSeats(updatedSeats);
+    setSelecTotal(updatedSeats * +price);
   }
   function handleDecrease() {
-    if (!selDate)
+    if (!selecDate)
       return toast("First you need to select a date", {
         icon: "🙂",
       });
-    if (seats <= 1)
+    if (selecSeats <= 1)
       return toast("Are you sure about that?", {
         icon: "🤨",
       });
-    setSeats(+seats - 1);
-    setSelecSeats(seats);
-    setTotal(+seats * +price - +price);
-    setSelecTotal(total);
+    const updatedSeats = +selecSeats - 1;
+    setSelecSeats(updatedSeats);
+    setSelecTotal(updatedSeats * +price);
   }
   return (
     <>
@@ -214,26 +229,26 @@ function TourCalendar({ availability, duration, price }) {
         </CalendarLegend>
         <Calendar
           onChange={handleDateChange}
-          defaultValue={selDate}
+          defaultValue={selecDate}
           // selectRange={true}
           minDate={new Date()}
           tileDisabled={TileDisabled}
           tileClassName={tileClassName}
         />
         <SlotsContainer>
-          {selDate ? (
+          {selecDate ? (
             <>
               <p>
                 <span>Start: </span>
-                {selDate.toDateString()}
+                {selecDate.toDateString()}
               </p>
               <p>
                 <span>End: </span>
                 {endDate}
               </p>
               <p>
-                {selectedSlots ? (
-                  <span>Available seats: {selectedSlots} </span>
+                {selecSlots ? (
+                  <span>Available seats: {selecSlots} </span>
                 ) : (
                   <span className="red">
                     No Available Seats for this date 🙌
@@ -260,14 +275,14 @@ function TourCalendar({ availability, duration, price }) {
           <button onClick={handleDecrease}>
             <HiMinus />
           </button>
-          <span>{seats}</span>
+          <span>{selecSeats}</span>
 
           <button onClick={handleIncrease}>
             <HiPlus />
           </button>
         </div>
       </Seats>
-      <Price>Total: ${total} </Price>
+      <Price>Total: ${selecTotal || price} </Price>
     </>
   );
 }

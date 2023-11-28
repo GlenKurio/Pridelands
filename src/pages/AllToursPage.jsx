@@ -3,6 +3,7 @@ import TourCard from "../features/tours/TourCard";
 import { useTours } from "../features/tours/useTours";
 import styled from "styled-components";
 import { useFavs } from "../features/users/useFavourites";
+import Spinner from "../components/atoms/Spinner";
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,7 +23,7 @@ const CardsContainer = styled.div`
 function AllToursPage() {
   const { isLoading, toursAll } = useTours();
   const { userFavs } = useFavs();
-  if (isLoading) return <div>Loading ...</div>;
+  if (isLoading) return <Spinner />;
   return (
     <PageContainer>
       <Heading type="h2" as="h1" color="gradient">

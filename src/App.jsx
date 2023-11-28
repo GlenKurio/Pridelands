@@ -25,7 +25,7 @@ import AccountLayout from "./features/users/AccountLayout";
 import Favourites from "./features/users/Favourites";
 import UpdateProfile from "./features/users/UpdateProfile";
 import ResBookings from "./features/users/ResBookingsTable";
-
+import SuccessPage from "./features/checkout/SuccessPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -41,7 +41,14 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="tours" element={<AllToursPage />} />
       <Route path="tours/:id" element={<TourDetails />} />
-      <Route path="checkout/:id" element={<CheckoutPage />} />
+      <Route
+        path="checkout/:id"
+        element={
+          <ProtectedRoute>
+            <CheckoutPage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="account"
         element={
@@ -58,6 +65,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<LogIn />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="emailconfirm" element={<EmailConfirm />} />
+      <Route path="success" element={<SuccessPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   )

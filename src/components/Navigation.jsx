@@ -180,6 +180,7 @@ function Navigation() {
         id="navi-toggle"
         className="navigation--checkbox"
         checked={isChecked}
+        readOnly
       />
       <label
         htmlFor="navi-toggle"

@@ -3,9 +3,10 @@ import Heading from "../../components/atoms/Heading";
 import styled from "styled-components";
 import StarRating from "../../components/atoms/star.rating";
 import { useNavigate } from "react-router-dom";
-import StyledLink from "../../components/atoms/StyledLink";
+// import StyledLink from "../../components/atoms/StyledLink";
 import Favourite from "../../components/Favourite";
-
+import { useContext } from "react";
+import { CalendarContext } from "../../contexts/calendar.context";
 const StyledTourCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,6 +111,7 @@ const HeartContainer = styled.div`
 
 function TourCard({ tour, favs }) {
   const navigate = useNavigate();
+  const { setSelecSeats, setSelecTotal } = useContext(CalendarContext);
 
   const {
     id,
@@ -125,6 +127,12 @@ function TourCard({ tour, favs }) {
     accommodation,
   } = tour;
   const isInFavorites = favs?.some((fav) => id === fav.tour);
+
+  function handleClick() {
+    navigate(`/tours/${id}`);
+    setSelecSeats(1);
+    setSelecTotal(price);
+  }
   return (
     <StyledTourCard>
       <HeartContainer>
@@ -151,10 +159,10 @@ function TourCard({ tour, favs }) {
           </DetailsRow>
         </Details>
         <Price>Price: ${price}</Price>
-        <StyledLink to={`/tours/${id}`}>Book</StyledLink>
-        {/* <Button type="primary" size="md" onClick={() => navigate(`${id}`)}>
+        {/* <StyledLink to={`/tours/${id}`}>Book</StyledLink> */}
+        <Button type="primary" size="md" onClick={handleClick}>
           Book
-        </Button> */}
+        </Button>
       </Content>
     </StyledTourCard>
   );

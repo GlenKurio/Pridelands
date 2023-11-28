@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "../../components/atoms/Button";
 import Heading from "../../components/atoms/Heading";
 import { devices } from "../../components/layout/Queries";
+import Spinner from "../../components/atoms/Spinner";
 const FavCardsContainer = styled.div`
   display: grid;
   gap: 2rem;
@@ -32,7 +33,7 @@ const Container = styled.div`
 function Favourites() {
   const { userFavs, isLoading } = useFavs();
   console.log(userFavs);
-  if (isLoading) return <div>Loading ...</div>;
+  if (isLoading) return <Spinner/>;
   if (userFavs.length == 0)
     return (
       <Empty>

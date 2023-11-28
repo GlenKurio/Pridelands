@@ -6,10 +6,11 @@ import StarRating from "../components/atoms/star.rating";
 import Button from "../components/atoms/Button";
 // import StyledLink from "../components/atoms/StyledLink";
 import TourCalendar from "../features/availability/Calendar";
-
-// import { useAvailability } from "../features/availability/useAvailability";
 import { useContext } from "react";
 import { CalendarContext } from "../contexts/calendar.context";
+import Spinner from "../components/atoms/Spinner";
+// import { useAvailability } from "../features/availability/useAvailability";
+
 const StyledTourDetails = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
@@ -63,15 +64,14 @@ const ButtonsContainer = styled.div`
 `;
 
 function TourDetails() {
+  const { setSelecSeats, setSelecTotal } = useContext(CalendarContext);
   const navigate = useNavigate();
   const { toursAll, isLoading } = useTours();
-  console.log(toursAll);
-  const { selecDate, selecSlots } = useContext(CalendarContext);
 
   // const { isLoadin, availability } = useAvailability();
   // console.log(availability);
   const { id } = useParams();
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Spinner />;
 
   const {
     name,
@@ -88,8 +88,12 @@ function TourDetails() {
     images,
     stories,
   } = toursAll.find((tour) => tour.id == id);
-  console.log(availability);
 
+  function handleClickBack() {
+    navigate("..");
+    setSelecSeats(1);
+    setSelecTotal(price);
+  }
   return (
     <StyledTourDetails>
       <ImgContainer>
@@ -128,13 +132,12 @@ function TourDetails() {
           <Button
             type="primary"
             size="md"
-            disabled={!selecDate && !selecSlots}
             onClick={() => navigate(`/checkout/${id}`)}
           >
             Book Now
           </Button>
           {/* <StyledLink to={`/checkout/${id}`}>Book</StyledLink> */}
-          <Button type="text" size="md" onClick={() => navigate("..")}>
+          <Button type="text" size="md" onClick={handleClickBack}>
             &larr; go back
           </Button>
         </ButtonsContainer>

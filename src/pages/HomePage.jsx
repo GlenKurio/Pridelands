@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import About from "../components/About";
 import Features from "../components/Features";
-
 import FeaturedTours from "../features/tours/FeaturedTours";
 
 import StoriesSection from "../features/stories/StoriesSection";

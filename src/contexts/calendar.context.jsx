@@ -14,7 +14,7 @@ export const CalendarContext = createContext({
 export function CalendarProvider({ children }) {
   const [selecDate, setSelecDate] = useState(null);
   const [selecSlots, setSelecSlots] = useState(null);
-  const [selecSeats, setSelecSeats] = useState(null);
+  const [selecSeats, setSelecSeats] = useState(1);
   const [selecTotal, setSelecTotal] = useState(null);
   const value = {
     selecDate,
