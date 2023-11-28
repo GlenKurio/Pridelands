@@ -5,7 +5,7 @@
 
 2. Account:
    -- Users can add Tours to favourites, which dispaly in their account;
-   -- In account users can see UPCOMING Tours - which user booked but it still on a future date.
+   <!-- -- In account users can see UPCOMING Tours - which user booked but it still on a future date. -->
    <!-- -- In account user can see VISITED Tours - wich users booked, and visited (tour start date + tour duration);
    -- Users can write a stories(reviews) on visited tours; -->
 
@@ -17,11 +17,12 @@
    ---- Filtering by: duration(to 3 days, to 7 days, 7+days), price(allow set the min and max price), group size, level; -->
 
    -- Adding to favourites from icon on tour card;
-   -- Showing tour details page about tour after click on info icon on card;
+   -- Showing tour details page about tour after click on book on card;
    -- Showing avg rating of the tour on card;
 
 4. Tour Details Page:
-   -- Gallery of images;
+   <!-- -- Gallery of images; -->
+
    -- Available dates and seats for each date;
    -- Users increase and decrease amount of seats;
    <!-- -- All Stories about this tour from clients who booked it;
