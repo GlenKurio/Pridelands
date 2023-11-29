@@ -12,10 +12,10 @@ dist
 dist-ssr
 *.local
 supapass.txt
-README.md
-.env
 
+.env
 TODO.md
+FEATURES.MD
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
