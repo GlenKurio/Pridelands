@@ -22,7 +22,7 @@ function ProtectedRoute({ children }) {
   // 2. If there is NO authenticated user, redirect to the /login
   useEffect(
     function () {
-      if (!isAuthenticated && !isLoading) {
+      if (!isLoading && !isAuthenticated) {
         navigate("/login");
         toast("Need to login first!", {
           icon: "☝",
